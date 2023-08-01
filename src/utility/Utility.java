@@ -3,10 +3,11 @@ package utility;
 import java.sql.*;
 
 public class Utility {
-
-	public String dburl = "jdbc:oracle:thin:@slfdatabase_high?TNS_ADMIN=/Users/abdullah/SLF/Wallet_SLFDatabase";
-	public String user = "ADMIN";
-	public String pass = "OraclePassword2023@";
+	
+	// Will replace with Properties
+	public String dburl = "";
+	public String user = "";
+	public String pass = "";
 	public Connection conn;
 	public ResultSet rs;
 	public Statement stmt;
