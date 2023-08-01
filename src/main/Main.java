@@ -18,6 +18,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.SystemColor;
+import javax.swing.JPasswordField;
 
 @SuppressWarnings("serial")
 public class Main extends JFrame {
@@ -25,10 +26,10 @@ public class Main extends JFrame {
 	private JPanel contentPane;
 	private JLabel lblNewLabel_2;
 	private JTextField textField;
-	private JTextField textField_1;
 	
 	ImageIcon logoImage=new ImageIcon("SLF-Logo.png");
 	private JLabel lblNewLabel_3;
+	private JPasswordField textField_1;
 
 	/**
 	 * Launch the application.
@@ -66,13 +67,8 @@ public class Main extends JFrame {
 		
 		textField = new JTextField();
 		textField.setColumns(10);
-		textField.setBounds(543, 145, 130, 26);
+		textField.setBounds(543, 145, 136, 26);
 		contentPane.add(textField);
-		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(543, 214, 130, 26);
-		contentPane.add(textField_1);
 		
 		JLabel lblNewLabel = new JLabel("Username");
 		lblNewLabel.setForeground(Color.BLACK);
@@ -89,6 +85,7 @@ public class Main extends JFrame {
 		
 		JButton btnNewButton = new JButton("LOGIN");
 		btnNewButton.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				try {
 					Utility ut = new Utility();
@@ -132,5 +129,9 @@ public class Main extends JFrame {
 		contentPane_1.add(lblNewLabel_3);
 		
 		lblNewLabel_3.setIcon(logoImage);
+		
+		textField_1 = new JPasswordField();
+		textField_1.setBounds(543, 214, 136, 26);
+		contentPane.add(textField_1);
 	}
 }

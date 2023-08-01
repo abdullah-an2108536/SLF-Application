@@ -25,6 +25,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JScrollPane;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
+import java.awt.Canvas;
 
 public class Menu extends JFrame {
 
@@ -84,7 +85,7 @@ public class Menu extends JFrame {
 		buttonPanel.add(ViewBeneficiaryDataButton);
 		
 		JButton SearchBeneficiaryDataButton_1 = new JButton("Search Beneficiary Data");
-		SearchBeneficiaryDataButton_1.setBounds(6, 383, 253, 29);
+		SearchBeneficiaryDataButton_1.setBounds(6, 384, 253, 29);
 		SearchBeneficiaryDataButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				removeCurrentPanel();
@@ -98,11 +99,11 @@ public class Menu extends JFrame {
 		});
 		buttonPanel.add(SearchBeneficiaryDataButton_1);
 		
-		JButton SearchBeneficiaryDataButton_1_1 = new JButton("x");
-		SearchBeneficiaryDataButton_1_1.setBounds(6, 413, 253, 29);
-		buttonPanel.add(SearchBeneficiaryDataButton_1_1);
+		JButton InsertBeneficiaryDataButton = new JButton("Insert Beneficiary Data");
+		InsertBeneficiaryDataButton.setBounds(6, 414, 253, 29);
+		buttonPanel.add(InsertBeneficiaryDataButton);
 		
-		JButton AddVaccinationRecordButton = new JButton("Add Vaccination Record");
+		JButton AddVaccinationRecordButton = new JButton("Insert Vaccination Record");
 		AddVaccinationRecordButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				removeCurrentPanel();
@@ -118,30 +119,30 @@ public class Menu extends JFrame {
 		AddVaccinationRecordButton.setBounds(6, 194, 247, 29);
 		buttonPanel.add(AddVaccinationRecordButton);
 		
-		JButton AddVaccinationRecordButton_1 = new JButton("x");
-		AddVaccinationRecordButton_1.setBounds(6, 221, 247, 29);
-		buttonPanel.add(AddVaccinationRecordButton_1);
+		JButton AddDiseaseRecordButton = new JButton("Insert Disease Record");
+		AddDiseaseRecordButton.setBounds(6, 221, 247, 29);
+		buttonPanel.add(AddDiseaseRecordButton);
 		
-		JLabel lblVaccination = new JLabel("--------- Vaccination ---------");
+		JLabel lblVaccination = new JLabel("--------- LiveStock ---------");
 		lblVaccination.setHorizontalAlignment(SwingConstants.CENTER);
 		lblVaccination.setBounds(6, 166, 241, 16);
 		buttonPanel.add(lblVaccination);
 		
-		JButton AddVaccinationRecordButton_1_1 = new JButton("x");
-		AddVaccinationRecordButton_1_1.setBounds(6, 248, 247, 29);
-		buttonPanel.add(AddVaccinationRecordButton_1_1);
+		JButton AddPredationRecordButton = new JButton("Insert Predation Record");
+		AddPredationRecordButton.setBounds(6, 248, 247, 29);
+		buttonPanel.add(AddPredationRecordButton);
 		
-		JButton AddVaccinationRecordButton_1_1_1 = new JButton("x");
+		JButton AddVaccinationRecordButton_1_1_1 = new JButton("Insert Slaughter Record");
 		AddVaccinationRecordButton_1_1_1.setBounds(6, 276, 247, 29);
 		buttonPanel.add(AddVaccinationRecordButton_1_1_1);
 		
-		JButton AddVaccinationRecordButton_1_1_1_1 = new JButton("x");
+		JButton AddVaccinationRecordButton_1_1_1_1 = new JButton("Insert Sold Record");
 		AddVaccinationRecordButton_1_1_1_1.setBounds(6, 302, 247, 29);
 		buttonPanel.add(AddVaccinationRecordButton_1_1_1_1);
 		
 		JLabel lblNewLabel_1 = new JLabel("--------- Beneficiary ---------");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(6, 337, 253, 16);
+		lblNewLabel_1.setBounds(6, 333, 253, 16);
 		buttonPanel.add(lblNewLabel_1);
 		
 		JButton btnNewButton = new JButton("New button");
@@ -160,43 +161,39 @@ public class Menu extends JFrame {
 		btnNewButton.setIcon(logoImage);
 		buttonPanel.add(btnNewButton);
 		
-		JButton btnX = new JButton("x");
-		btnX.setBounds(6, 466, 253, 29);
-		buttonPanel.add(btnX);
+		JButton ViewCommunityButton = new JButton("View Communities");
+		ViewCommunityButton.setBounds(6, 466, 253, 29);
+		buttonPanel.add(ViewCommunityButton);
 		
-		JButton SearchBeneficiaryDataButton_1_2 = new JButton("x");
-		SearchBeneficiaryDataButton_1_2.setBounds(6, 493, 253, 29);
-		buttonPanel.add(SearchBeneficiaryDataButton_1_2);
+		JLabel Community = new JLabel("--------- Community ---------");
+		Community.setHorizontalAlignment(SwingConstants.CENTER);
+		Community.setBounds(6, 442, 253, 16);
+		buttonPanel.add(Community);
 		
-		JButton SearchBeneficiaryDataButton_1_1_1 = new JButton("x");
-		SearchBeneficiaryDataButton_1_1_1.setBounds(6, 523, 253, 29);
-		buttonPanel.add(SearchBeneficiaryDataButton_1_1_1);
-		
-		JLabel lblNewLabel_1_1 = new JLabel("--------- Other ---------");
-		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1_1.setBounds(6, 447, 253, 16);
-		buttonPanel.add(lblNewLabel_1_1);
-		
-		JButton SearchBeneficiaryDataButton_1_1_1_1 = new JButton("x");
-		SearchBeneficiaryDataButton_1_1_1_1.setBounds(6, 552, 253, 29);
+		JButton SearchBeneficiaryDataButton_1_1_1_1 = new JButton("Insert Vaccine Type");
+		SearchBeneficiaryDataButton_1_1_1_1.setBounds(6, 540, 253, 29);
 		buttonPanel.add(SearchBeneficiaryDataButton_1_1_1_1);
 		
-		JButton SearchBeneficiaryDataButton_1_1_1_1_1 = new JButton("x");
-		SearchBeneficiaryDataButton_1_1_1_1_1.setBounds(6, 581, 253, 29);
+		JButton SearchBeneficiaryDataButton_1_1_1_1_1 = new JButton("Insert Donor");
+		SearchBeneficiaryDataButton_1_1_1_1_1.setBounds(6, 566, 253, 29);
 		buttonPanel.add(SearchBeneficiaryDataButton_1_1_1_1_1);
 		
-		JButton ViewBeneficiaryDataButton_1_1 = new JButton("x");
-		ViewBeneficiaryDataButton_1_1.setBounds(6, 632, 253, 29);
+		JButton ViewBeneficiaryDataButton_1_1 = new JButton("Insert Disease Type");
+		ViewBeneficiaryDataButton_1_1.setBounds(6, 594, 253, 29);
 		buttonPanel.add(ViewBeneficiaryDataButton_1_1);
 		
-		JButton SearchBeneficiaryDataButton_1_2_1 = new JButton("x");
-		SearchBeneficiaryDataButton_1_2_1.setBounds(6, 659, 253, 29);
+		JButton SearchBeneficiaryDataButton_1_2_1 = new JButton("Insert Predator Type");
+		SearchBeneficiaryDataButton_1_2_1.setBounds(6, 621, 253, 29);
 		buttonPanel.add(SearchBeneficiaryDataButton_1_2_1);
 		
 		JLabel lblNewLabel_1_1_1 = new JLabel("--------- Other ---------");
 		lblNewLabel_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1_1_1.setBounds(6, 613, 253, 16);
+		lblNewLabel_1_1_1.setBounds(6, 524, 253, 16);
 		buttonPanel.add(lblNewLabel_1_1_1);
+		
+		JButton InsertCommunityDataButton = new JButton("Insert Community Data");
+		InsertCommunityDataButton.setBounds(6, 492, 253, 29);
+		buttonPanel.add(InsertCommunityDataButton);
 		
 
 
