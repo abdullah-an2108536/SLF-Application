@@ -57,6 +57,7 @@ public class AddRecordPanel extends JPanel {
 		contentPanel.add(currentPanel);
 		add(contentPanel);
 		
+		
 
 
 		bName_TF = new JTextField();
