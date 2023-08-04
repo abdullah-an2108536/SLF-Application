@@ -96,7 +96,7 @@ public class Login extends JFrame {
 					ut.pstmt.setString(2, passwordTF.getPassword().toString());
 					ut.rs = ut.pstmt.executeQuery();
 					if (ut.rs.next()) {
-						Menu.main(null);		
+						MainMenu.main(null);		
 						dispose();
 					} else {
 						JOptionPane.showMessageDialog(null, "Username or Password is incorrect, please try again");
