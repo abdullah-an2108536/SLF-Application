@@ -1,4 +1,4 @@
-package panels;
+package InsertRecord;
 
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -23,6 +23,7 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.awt.event.ActionEvent;
 
+@SuppressWarnings("serial")
 public class AddRecordPanel extends JPanel {
 	
 	
@@ -44,7 +45,7 @@ public class AddRecordPanel extends JPanel {
 
 		setBorder(new MatteBorder(0, 1, 1, 1, (Color) Color.WHITE));
 		setBackground(new Color(254, 255, 255));
-		setPreferredSize(new Dimension(882, 733));
+		setPreferredSize(new Dimension(882, 751));
 		setLayout(null);
 		setLayout(null);
 		
@@ -66,14 +67,17 @@ public class AddRecordPanel extends JPanel {
 		bName_TF.setColumns(10);
 
 		JLabel lblNewLabel = new JLabel("Beneficiary Name");
+		lblNewLabel.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		lblNewLabel.setBounds(294, 128, 130, 16);
 		add(lblNewLabel);
 
 		JLabel lblNewLabel_1 = new JLabel("Father Name");
+		lblNewLabel_1.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		lblNewLabel_1.setBounds(294, 160, 118, 16);
 		add(lblNewLabel_1);
 
 		JLabel lblNewLabel_1_1 = new JLabel("Year");
+		lblNewLabel_1_1.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		lblNewLabel_1_1.setBounds(294, 228, 61, 16);
 		add(lblNewLabel_1_1);
 
@@ -87,6 +91,7 @@ public class AddRecordPanel extends JPanel {
 		add(vaccinater_TF);
 
 		JLabel lblNewLabel_1_1_1_1 = new JLabel("Donor");
+		lblNewLabel_1_1_1_1.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		lblNewLabel_1_1_1_1.setBounds(294, 385, 61, 16);
 		add(lblNewLabel_1_1_1_1);
 
@@ -100,12 +105,14 @@ public class AddRecordPanel extends JPanel {
 		fName_TF.setBounds(432, 155, 249, 26);
 		add(fName_TF);
 
-		lblNewLabel_1_2 = new JLabel("Quater");
+		lblNewLabel_1_2 = new JLabel("Season");
+		lblNewLabel_1_2.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		lblNewLabel_1_2.setBounds(294, 267, 61, 16);
 
 		add(lblNewLabel_1_2);
 
 		lblNewLabel_1_3 = new JLabel("Date");
+		lblNewLabel_1_3.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		lblNewLabel_1_3.setBounds(294, 308, 61, 16);
 		add(lblNewLabel_1_3);
 
@@ -133,11 +140,6 @@ public class AddRecordPanel extends JPanel {
 
 		add(year_CB);
 
-		JPanel panel = new JPanel();
-		panel.setBackground(new Color(118, 179, 220));
-		panel.setBounds(260, 44, 472, 399);
-		add(panel);
-
 		JLabel lblNewLabel_1_1_2 = new JLabel("Record Type");
 		lblNewLabel_1_1_2.setBounds(341, 459, 83, 16);
 		add(lblNewLabel_1_1_2);
@@ -148,7 +150,7 @@ public class AddRecordPanel extends JPanel {
 
 				if (record_CB.getSelectedItem() == "Vaccination") {
 					removeCurrentPanel();
-					InsertVaccinationPanel vpanel = new InsertVaccinationPanel();
+					InsertVaccinationPanel vpanel = new InsertVaccinationPanel(bName_TF);
 					currentPanel=vpanel;
 					contentPanel.add(vpanel);
 				}
@@ -164,6 +166,25 @@ public class AddRecordPanel extends JPanel {
 			record_CB.addItem(recordsArr[i]);
 		}
 		add(record_CB);
+		
+		JPanel panel = new JPanel();
+		panel.setLayout(null);
+		panel.setBackground(new Color(118, 179, 220));
+		panel.setBounds(260, 47, 480, 388);
+		add(panel);
+		
+		JLabel lblNewLabel_2 = new JLabel("Insert Record");
+		lblNewLabel_2.setFont(new Font("Songti TC", Font.PLAIN, 20));
+		lblNewLabel_2.setBounds(187, 21, 134, 16);
+		panel.add(lblNewLabel_2);
+		
+		JButton btnNewBeneficiary = new JButton("new");
+		btnNewBeneficiary.setBounds(421, 78, 61, 29);
+		panel.add(btnNewBeneficiary);
+		btnNewBeneficiary.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		
 
 	}

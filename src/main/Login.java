@@ -54,6 +54,7 @@ public class Login extends JFrame {
 	 * Create the frame.
 	 */
 	public Login() {
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 733, 453);
 		contentPane = new JPanel();
@@ -63,26 +64,26 @@ public class Login extends JFrame {
 		contentPane.setLayout(null);
 		
 		loginInstructionLabel = new JLabel("Login to SLF Database");
-		loginInstructionLabel.setFont(new Font("Arial", Font.PLAIN, 22));
-		loginInstructionLabel.setBounds(454, 55, 241, 38);
+		loginInstructionLabel.setFont(new Font("Heiti SC", Font.PLAIN, 25));
+		loginInstructionLabel.setBounds(413, 71, 320, 38);
 		contentPane.add(loginInstructionLabel);
 		
 		usernameTF = new JTextField();
 		usernameTF.setColumns(10);
-		usernameTF.setBounds(543, 145, 136, 26);
+		usernameTF.setBounds(534, 146, 136, 26);
 		contentPane.add(usernameTF);
 		
 		JLabel usernameLabel = new JLabel("Username");
 		usernameLabel.setForeground(Color.BLACK);
-		usernameLabel.setFont(new Font("Lucida Grande", Font.BOLD, 13));
+		usernameLabel.setFont(new Font("Heiti SC", Font.PLAIN, 13));
 		usernameLabel.setBackground(new Color(244, 255, 236));
-		usernameLabel.setBounds(436, 150, 91, 16);
+		usernameLabel.setBounds(427, 151, 91, 16);
 		contentPane.add(usernameLabel);
 		
 		JLabel passwordLabel = new JLabel("Password");
 		passwordLabel.setForeground(Color.BLACK);
-		passwordLabel.setFont(new Font("Lucida Grande", Font.BOLD, 13));
-		passwordLabel.setBounds(436, 219, 79, 16);
+		passwordLabel.setFont(new Font("Heiti SC", Font.PLAIN, 13));
+		passwordLabel.setBounds(427, 220, 79, 16);
 		contentPane.add(passwordLabel);
 		
 		JButton loginBTN = new JButton("LOGIN");
@@ -109,7 +110,7 @@ public class Login extends JFrame {
 
 			}
 		});
-		loginBTN.setBounds(491, 278, 117, 29);
+		loginBTN.setBounds(482, 279, 117, 29);
 		contentPane.add(loginBTN);
 		
 		JPanel logoPane = new JPanel();
@@ -120,13 +121,13 @@ public class Login extends JFrame {
 		contentPane.add(logoPane);
 		
 		logoImageLabel = new JLabel("");
-		logoImageLabel.setBounds(54, 112, 267, 189);
+		logoImageLabel.setBounds(54, 123, 267, 164);
 		logoPane.add(logoImageLabel);
 		
 		logoImageLabel.setIcon(logoImage);
 		
 		passwordTF = new JPasswordField();
-		passwordTF.setBounds(543, 214, 136, 26);
+		passwordTF.setBounds(534, 215, 136, 26);
 		contentPane.add(passwordTF);
 	}
 }

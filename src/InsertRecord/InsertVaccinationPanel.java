@@ -1,6 +1,7 @@
-package panels;
+package InsertRecord;
 
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import utility.Utility;
 
@@ -11,13 +12,21 @@ import javax.swing.JOptionPane;
 import java.sql.SQLException;
 
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class InsertVaccinationPanel extends JPanel {
+	
+//	private JTextField bName_TF;
 
 	/**
 	 * Create the panel.
 	 */
-	public InsertVaccinationPanel() {
+	public InsertVaccinationPanel(JTextField bName_TF) {
+		
+//		this.bName_TF=bName_TF;
+		
+		
 		setLayout(null);
 		
 		JComboBox goatCB = new JComboBox();
@@ -33,7 +42,7 @@ public class InsertVaccinationPanel extends JPanel {
 		add(lblNewLabel_1_1_2);
 		
 		JComboBox type_CB = new JComboBox();
-		type_CB.setBounds(179, 46, 249, 27);
+		type_CB.setBounds(179, 46, 229, 27);
 		add(type_CB);
 		
 		JLabel lblNewLabel_1_1_1_1_1 = new JLabel("Sheep");
@@ -77,6 +86,13 @@ public class InsertVaccinationPanel extends JPanel {
 		add(otherCB);
 		
 		JButton submitButton = new JButton("Submit Vaccination Record"); 
+		submitButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String text= bName_TF.getText();
+				System.out.println(text);
+				
+			}
+		});
 		submitButton.setBounds(136, 199, 204, 29);
 		/*
 		  try {
@@ -180,6 +196,10 @@ public class InsertVaccinationPanel extends JPanel {
 			}
 		 */
 		add(submitButton);
+		
+		JButton btnNewButton = new JButton("new");
+		btnNewButton.setBounds(404, 45, 70, 29);
+		add(btnNewButton);
 
 	}
 

@@ -15,15 +15,14 @@ import javax.swing.JPanel;
 import javax.swing.border.MatteBorder;
 
 import InsertRecord.AddRecordFrame;
+import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class MainMenu extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -37,9 +36,7 @@ public class MainMenu extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+
 	public MainMenu() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 753, 410);
@@ -51,6 +48,7 @@ public class MainMenu extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnInsertRecord = new JButton("Insert Record");
+		btnInsertRecord.setVerticalAlignment(SwingConstants.BOTTOM);
 		btnInsertRecord.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AddRecordFrame.main(null);
@@ -58,13 +56,14 @@ public class MainMenu extends JFrame {
 		});
 		btnInsertRecord.setBackground(new Color(130, 189, 217));
 		btnInsertRecord.setFont(new Font("Bangla Sangam MN", Font.PLAIN, 20));
-		btnInsertRecord.setBounds(151, 268, 196, 57);
+		btnInsertRecord.setBounds(151, 267, 196, 43);
 		contentPane.add(btnInsertRecord);
 		
 		JButton btnViewData = new JButton("View Data");
+		btnViewData.setVerticalAlignment(SwingConstants.BOTTOM);
 		btnViewData.setBackground(new Color(130, 189, 217));
 		btnViewData.setFont(new Font("Bangla Sangam MN", Font.PLAIN, 20));
-		btnViewData.setBounds(433, 268, 196, 57);
+		btnViewData.setBounds(431, 267, 196, 43);
 		contentPane.add(btnViewData);
 		
 		JLabel lblNewLabel = new JLabel("");
