@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.Calendar;
 
 import javax.swing.JButton;
@@ -14,6 +15,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
+
+import net.proteanit.sql.DbUtils;
+import utility.Utility;
 
 @SuppressWarnings("serial")
 public class AddRecordPanel extends JPanel {
@@ -164,10 +168,38 @@ public class AddRecordPanel extends JPanel {
 		
 		JComboBox Vaccinater_CB = new JComboBox();
 		Vaccinater_CB.setBounds(168, 299, 254, 27);
+//		  try {
+//	            Utility ut = new Utility();
+//	            String sql = "SELECT UNIQUE VACCINATER FROM VACCINATION_RECORD";
+//	            ut.stmt=ut.conn.prepareStatement(sql);
+//	            ut.rs = ut.stmt.executeQuery(sql);
+//	            
+//	            while(ut.rs.next()) {
+//	            	Vaccinater_CB.addItem(ut.rs.getString(0));
+//	            }
+//	            
+//	            ut.terminate();     
+//	        } catch (SQLException e1) {
+//	            e1.printStackTrace();
+//	        }
 		panel.add(Vaccinater_CB);
 		
 		JComboBox Donor_CB = new JComboBox();
 		Donor_CB.setBounds(168, 338, 254, 27);
+//		try {
+//            Utility ut = new Utility();
+//            String sql = "SELECT UNIQUE DONOR FROM VACCINATION_RECORD";
+//            ut.stmt=ut.conn.prepareStatement(sql);
+//            ut.rs = ut.stmt.executeQuery(sql);
+//            
+//            while(ut.rs.next()) {
+//            	Donor_CB.addItem(ut.rs.getString(0));
+//            }
+//            
+//            ut.terminate();     
+//        } catch (SQLException e1) {
+//            e1.printStackTrace();
+//        }
 		panel.add(Donor_CB);
 		
 		JButton btnNewVaccinater = new JButton("new");
