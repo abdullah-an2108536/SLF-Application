@@ -1,17 +1,17 @@
-package InsertRecord;
+package insertRecord;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Color;
+import javax.swing.border.EmptyBorder;
 
 public class AddDiseaseTypeFrame extends JFrame {
 
@@ -36,7 +36,8 @@ public class AddDiseaseTypeFrame extends JFrame {
 
 	/**
 	 * Create the frame.
-	 * @param donor_CB 
+	 * 
+	 * @param donor_CB
 	 */
 	public AddDiseaseTypeFrame(JComboBox type_CB) {
 		setBackground(Color.WHITE);
@@ -48,11 +49,11 @@ public class AddDiseaseTypeFrame extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JLabel lblAddNewDonor = new JLabel("Add New Disease");
 		lblAddNewDonor.setBounds(172, 33, 117, 16);
 		contentPane.add(lblAddNewDonor);
-		
+
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -62,7 +63,7 @@ public class AddDiseaseTypeFrame extends JFrame {
 		});
 		btnSubmit.setBounds(172, 195, 117, 29);
 		contentPane.add(btnSubmit);
-		
+
 		textField = new JTextField();
 		textField.setColumns(10);
 		textField.setBounds(103, 110, 252, 26);

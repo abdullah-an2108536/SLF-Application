@@ -14,14 +14,15 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.MatteBorder;
 
-import InsertRecord.AddRecordFrame;
+import insertRecord.AddRecordFrame;
+import viewData.ViewDataFrame;
+
 import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class MainMenu extends JFrame {
 
 	private JPanel contentPane;
-
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -35,7 +36,6 @@ public class MainMenu extends JFrame {
 			}
 		});
 	}
-
 
 	public MainMenu() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -60,6 +60,11 @@ public class MainMenu extends JFrame {
 		contentPane.add(btnInsertRecord);
 		
 		JButton btnViewData = new JButton("View Data");
+		btnViewData.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ViewDataFrame.main(null);
+			}
+		});
 		btnViewData.setVerticalAlignment(SwingConstants.BOTTOM);
 		btnViewData.setBackground(new Color(130, 189, 217));
 		btnViewData.setFont(new Font("Bangla Sangam MN", Font.PLAIN, 20));

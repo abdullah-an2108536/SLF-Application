@@ -1,4 +1,4 @@
-package InsertRecord;
+package insertRecord;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -6,19 +6,14 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 import java.util.Calendar;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
-
-import net.proteanit.sql.DbUtils;
-import utility.Utility;
 
 @SuppressWarnings("serial")
 public class AddRecordPanel extends JPanel {

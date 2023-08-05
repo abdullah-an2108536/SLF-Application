@@ -1,4 +1,4 @@
-package InsertRecord;
+package insertRecord;
 
 import java.awt.EventQueue;
 

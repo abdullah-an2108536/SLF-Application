@@ -1,4 +1,4 @@
-package InsertRecord;
+package insertRecord;
 
 import javax.swing.JPanel;
 import javax.swing.JTextField;
