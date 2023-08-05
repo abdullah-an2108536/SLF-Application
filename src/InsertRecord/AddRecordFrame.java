@@ -23,7 +23,7 @@ public class AddRecordFrame extends JFrame {
 	public AddRecordFrame() {
 		setResizable(false);
 		setTitle("Add Record");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setSize(497, 725);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(null);

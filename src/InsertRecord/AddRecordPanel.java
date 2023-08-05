@@ -11,6 +11,7 @@ import java.util.Calendar;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -35,8 +36,9 @@ public class AddRecordPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public AddRecordPanel() {
-
+		
 		setBorder(new MatteBorder(0, 1, 1, 1, (Color) Color.WHITE));
 		setBackground(new Color(254, 255, 255));
 		setPreferredSize(new Dimension(882, 751));
@@ -128,29 +130,11 @@ public class AddRecordPanel extends JPanel {
 		lblNewLabel_1_1_2.setBounds(341, 459, 83, 16);
 		add(lblNewLabel_1_1_2);
 
-		JComboBox record_CB = new JComboBox();
-		record_CB.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				if (record_CB.getSelectedItem() == "Vaccination") {
-					removeCurrentPanel();
-					InsertVaccinationPanel vpanel = new InsertVaccinationPanel(bName_TF);
-					currentPanel=vpanel;
-					contentPanel.add(vpanel);
-				}
-				else {
-					removeCurrentPanel();
-				}
-			}
-		});
-		record_CB.setBounds(436, 455, 245, 27);
-
-		String[] recordsArr = { "","Vaccination", "Predation", "Slaughter", "Sales" };
-		for (int i = 0; i < recordsArr.length; i++) {
-			record_CB.addItem(recordsArr[i]);
-		}
-		add(record_CB);
+		/*
+		 * Change the type of record being inserted
+		 */
 		
+
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(new Color(118, 179, 220));
@@ -228,6 +212,30 @@ public class AddRecordPanel extends JPanel {
 				AddBeneficiaryFrame.main(null);
 			}
 		});
+		
+		JComboBox record_CB = new JComboBox();
+		String[] recordsArr = { "","Vaccination", "Predation", "Slaughter", "Sales" };
+		for (int i = 0; i < recordsArr.length; i++) {
+			record_CB.addItem(recordsArr[i]);
+		}
+		
+		
+		record_CB.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (record_CB.getSelectedItem() == "Vaccination") {
+					removeCurrentPanel();
+					InsertVaccinationPanel vpanel = new InsertVaccinationPanel(bName_TF,fName_TF,year_CB,season_CB,date_TF,Vaccinater_CB,Donor_CB);
+					currentPanel=vpanel;
+					contentPanel.add(vpanel);
+				}
+				else {
+					removeCurrentPanel();
+				}
+			}
+		});
+		record_CB.setBounds(436, 455, 245, 27);
+		add(record_CB);
+
 		
 
 	}

@@ -21,8 +21,14 @@ public class InsertVaccinationPanel extends JPanel {
 
 	/**
 	 * Create the panel.
+	 * @param donor_CB 
+	 * @param vaccinater_CB 
+	 * @param date_TF 
+	 * @param season_CB 
+	 * @param year_CB 
+	 * @param fName_TF 
 	 */
-	public InsertVaccinationPanel(JTextField bName_TF) {
+	public InsertVaccinationPanel(JTextField bName_TF, JTextField fName_TF, JComboBox year_CB, JComboBox season_CB, JTextField date_TF, JComboBox vaccinater_CB, JComboBox donor_CB) {
 		
 //		this.bName_TF=bName_TF;
 		
@@ -31,6 +37,9 @@ public class InsertVaccinationPanel extends JPanel {
 		
 		JComboBox goatCB = new JComboBox();
 		goatCB.setBounds(19, 152, 83, 27);
+		for (int i = 0; i < 99; i++) {
+			goatCB.addItem(i);
+		}
 		add(goatCB);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("Vaccination Record");
@@ -71,18 +80,30 @@ public class InsertVaccinationPanel extends JPanel {
 		
 		JComboBox cattleCB = new JComboBox();
 		cattleCB.setBounds(100, 152, 83, 27);
+		for (int i = 0; i < 99; i++) {
+			cattleCB.addItem(i);
+		}
 		add(cattleCB);
 		
 		JComboBox yakCB = new JComboBox();
 		yakCB.setBounds(195, 152, 83, 27);
+		for (int i = 0; i < 99; i++) {
+			yakCB.addItem(i);
+		}
 		add(yakCB);
 		
 		JComboBox sheepCB = new JComboBox();
 		sheepCB.setBounds(290, 152, 83, 27);
+		for (int i = 0; i < 99; i++) {
+			sheepCB.addItem(i);
+		}
 		add(sheepCB);
 		
 		JComboBox otherCB = new JComboBox();
 		otherCB.setBounds(375, 152, 83, 27);
+		for (int i = 0; i < 99; i++) {
+			otherCB.addItem(i);
+		}
 		add(otherCB);
 		
 		JButton submitButton = new JButton("Submit Vaccination Record"); 
@@ -113,7 +134,7 @@ public class InsertVaccinationPanel extends JPanel {
 							bid = ut.rs.getString(1);
 						}
 					} catch (Exception e2) {
-						JOptionPane.showMessageDialog(null, "Problem with Beneficiary Name or Father Name");
+						JOptionPane.showMessageDialog(null, "Problem with Beneficiary Name or Father Name. Try adding a new Beneficiary if this one doesn't exist");
 						
 					}
 					
@@ -134,8 +155,8 @@ public class InsertVaccinationPanel extends JPanel {
 						ut.pstmt.setString(1, year_CB.getSelectedItem().toString());
 						ut.pstmt.setString(2, quater_CB.getSelectedItem().toString());
 						ut.pstmt.setString(3, date_TF.getText());
-						ut.pstmt.setString(4, vaccinater_TF.getText());
-						ut.pstmt.setString(5, donor_TF.getText());
+						ut.pstmt.setString(4, Vaccinater_CB.getSelectedItem().toString());
+						ut.pstmt.setString(5, Donor_CB.getSelectedItem().toString());
 						ut.pstmt.setString(6, bid);
 						ut.pstmt.executeUpdate();
 
@@ -198,6 +219,14 @@ public class InsertVaccinationPanel extends JPanel {
 		add(submitButton);
 		
 		JButton btnNewButton = new JButton("new");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AddVaccinationTypeFrame addVaccinationTypeFrame = new AddVaccinationTypeFrame(type_CB);
+				addVaccinationTypeFrame.setVisible(true);
+				
+				
+			}
+		});
 		btnNewButton.setBounds(404, 45, 70, 29);
 		add(btnNewButton);
 
