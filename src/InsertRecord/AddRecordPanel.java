@@ -100,13 +100,15 @@ public class AddRecordPanel extends JPanel {
 		date_TF.setBounds(432, 303, 249, 26);
 		add(date_TF);
 
-		// Populate Quater Combo Box
-		JComboBox quater_CB = new JComboBox();
-		quater_CB.setBounds(432, 263, 161, 27);
-		for (int i = 1; i <= 4; i++) {
-			quater_CB.addItem(i);
+		// Populate season Combo Box
+		JComboBox season_CB = new JComboBox();
+		season_CB.setBounds(432, 263, 161, 27);
+		
+		String[] seasons= {"Summer","Winter"};
+		for (int i = 0;i<seasons.length;i++) {
+			season_CB.addItem(seasons[i]);
 		}
-		add(quater_CB);
+		add(season_CB);
 
 		// Populate Year Combo Box
 		JComboBox year_CB = new JComboBox();
