@@ -1,27 +1,19 @@
 package InsertRecord;
 
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
-import java.awt.Dimension;
-
-import javax.swing.JButton;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
-import javax.swing.border.MatteBorder;
-
-import utility.Utility;
-
-import javax.swing.JComboBox;
-import javax.swing.SwingConstants;
+import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.sql.SQLException;
-import java.util.Calendar;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Calendar;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.MatteBorder;
 
 @SuppressWarnings("serial")
 public class AddRecordPanel extends JPanel {
@@ -29,8 +21,6 @@ public class AddRecordPanel extends JPanel {
 	
 	private JPanel contentPanel;
 	private JTextField bName_TF;
-	private JTextField vaccinater_TF;
-	private JTextField donor_TF;
 	private JTextField fName_TF;
 	private JLabel lblNewLabel_1_2;
 	private JLabel lblNewLabel_1_3;
@@ -58,9 +48,6 @@ public class AddRecordPanel extends JPanel {
 		contentPanel.add(currentPanel);
 		add(contentPanel);
 		
-		
-
-
 		bName_TF = new JTextField();
 		bName_TF.setBounds(432, 123, 249, 26);
 		add(bName_TF);
@@ -85,20 +72,10 @@ public class AddRecordPanel extends JPanel {
 		lblNewLabel_1_1_1.setBounds(294, 347, 129, 16);
 		add(lblNewLabel_1_1_1);
 
-		vaccinater_TF = new JTextField();
-		vaccinater_TF.setColumns(10);
-		vaccinater_TF.setBounds(432, 342, 249, 26);
-		add(vaccinater_TF);
-
 		JLabel lblNewLabel_1_1_1_1 = new JLabel("Donor");
 		lblNewLabel_1_1_1_1.setFont(new Font("Helvetica", Font.PLAIN, 13));
 		lblNewLabel_1_1_1_1.setBounds(294, 385, 61, 16);
 		add(lblNewLabel_1_1_1_1);
-
-		donor_TF = new JTextField();
-		donor_TF.setColumns(10);
-		donor_TF.setBounds(432, 380, 249, 26);
-		add(donor_TF);
 
 		fName_TF = new JTextField();
 		fName_TF.setColumns(10);
@@ -117,6 +94,7 @@ public class AddRecordPanel extends JPanel {
 		add(lblNewLabel_1_3);
 
 		date_TF = new JTextField();
+		date_TF.setText("MM/DD/YYYY");
 		date_TF.setToolTipText("MM/DD/YYYY");
 		date_TF.setColumns(10);
 		date_TF.setBounds(432, 303, 249, 26);
@@ -179,10 +157,41 @@ public class AddRecordPanel extends JPanel {
 		panel.add(lblNewLabel_2);
 		
 		JButton btnNewBeneficiary = new JButton("new");
-		btnNewBeneficiary.setBounds(421, 78, 61, 29);
+		btnNewBeneficiary.setBounds(419, 90, 61, 29);
 		panel.add(btnNewBeneficiary);
+		
+		JComboBox Vaccinater_CB = new JComboBox();
+		Vaccinater_CB.setBounds(168, 299, 254, 27);
+		panel.add(Vaccinater_CB);
+		
+		JComboBox Donor_CB = new JComboBox();
+		Donor_CB.setBounds(168, 338, 254, 27);
+		panel.add(Donor_CB);
+		
+		JButton btnNewVaccinater = new JButton("new");
+		btnNewVaccinater.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AddVaccinaterFrame addVaccinaterFrame=new AddVaccinaterFrame(Vaccinater_CB);
+				addVaccinaterFrame.setVisible(true);
+			}
+		});
+		btnNewVaccinater.setBounds(419, 298, 61, 29);
+		panel.add(btnNewVaccinater);
+		
+		JButton btnNewDonor = new JButton("new");
+		btnNewDonor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AddDonorFrame addDonorFrame = new AddDonorFrame(Donor_CB);
+				addDonorFrame.setVisible(true);
+				
+				
+			}
+		});
+		btnNewDonor.setBounds(419, 337, 61, 29);
+		panel.add(btnNewDonor);
 		btnNewBeneficiary.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				AddBeneficiaryFrame.main(null);
 			}
 		});
 		

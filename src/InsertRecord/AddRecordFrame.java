@@ -1,10 +1,24 @@
 package InsertRecord;
 
+import java.awt.EventQueue;
+
 import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
 
 @SuppressWarnings("serial")
 public class AddRecordFrame extends JFrame {
+
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					AddRecordFrame frame = new AddRecordFrame();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	public AddRecordFrame() {
 		setResizable(false);
@@ -19,11 +33,5 @@ public class AddRecordFrame extends JFrame {
 		getContentPane().add(addRecordPanel);
 
 		setVisible(true);
-	}
-
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(() -> {
-			new AddRecordFrame(); 
-		});
 	}
 }
