@@ -230,6 +230,30 @@ public class AddRecordPanel extends JPanel {
 					currentPanel = ppanel;
 					contentPanel.add(ppanel);
 				}
+				
+				else if (record_CB.getSelectedItem().equals("Disease")) {
+					removeCurrentPanel();
+					InsertDiseasePanel dpanel = new InsertDiseasePanel(bName_TF, fName_TF, year_CB, season_CB,
+							date_TF, Vaccinater_CB, Donor_CB);
+					currentPanel = dpanel;
+					contentPanel.add(dpanel);
+				}
+				
+				else if (record_CB.getSelectedItem().equals("Slaughter")) {
+					removeCurrentPanel();
+					InsertSlaughterPanel slpanel = new InsertSlaughterPanel(bName_TF, fName_TF, year_CB, season_CB,
+							date_TF, Vaccinater_CB, Donor_CB);
+					currentPanel = slpanel;
+					contentPanel.add(slpanel);
+				}
+				
+				else if (record_CB.getSelectedItem().equals("Sales")) {
+					removeCurrentPanel();
+					InsertSalesPanel spanel = new InsertSalesPanel(bName_TF, fName_TF, year_CB, season_CB,
+							date_TF, Vaccinater_CB, Donor_CB);
+					currentPanel = spanel;
+					contentPanel.add(spanel);
+				}
 
 				else {
 					removeCurrentPanel();
