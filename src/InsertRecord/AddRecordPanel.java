@@ -22,29 +22,27 @@ import utility.Utility;
 
 @SuppressWarnings("serial")
 public class AddRecordPanel extends JPanel {
-	
-	
+
 	private JPanel contentPanel;
 	private JTextField bName_TF;
 	private JTextField fName_TF;
 	private JLabel lblNewLabel_1_2;
 	private JLabel lblNewLabel_1_3;
 	private JTextField date_TF;
-	private JPanel currentPanel=new JPanel(); // New variable to keep track of the currently displayed panel
-
+	private JPanel currentPanel = new JPanel(); // New variable to keep track of the currently displayed panel
 
 	/**
 	 * Create the panel.
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public AddRecordPanel() {
-		
+
 		setBorder(new MatteBorder(0, 1, 1, 1, (Color) Color.WHITE));
 		setBackground(new Color(254, 255, 255));
 		setPreferredSize(new Dimension(882, 751));
 		setLayout(null);
 		setLayout(null);
-		
+
 		contentPanel = new JPanel();
 		contentPanel.setBackground(new Color(255, 255, 255));
 		contentPanel.setBounds(260, 507, 480, 240);
@@ -53,7 +51,7 @@ public class AddRecordPanel extends JPanel {
 		contentPanel.setLayout(new BorderLayout());
 		contentPanel.add(currentPanel);
 		add(contentPanel);
-		
+
 		bName_TF = new JTextField();
 		bName_TF.setBounds(432, 123, 249, 26);
 		add(bName_TF);
@@ -109,9 +107,9 @@ public class AddRecordPanel extends JPanel {
 		// Populate season Combo Box
 		JComboBox season_CB = new JComboBox();
 		season_CB.setBounds(432, 263, 161, 27);
-		
-		String[] seasons= {"Summer","Winter"};
-		for (int i = 0;i<seasons.length;i++) {
+
+		String[] seasons = { "Summer", "Winter" };
+		for (int i = 0; i < seasons.length; i++) {
 			season_CB.addItem(seasons[i]);
 		}
 		add(season_CB);
@@ -133,23 +131,22 @@ public class AddRecordPanel extends JPanel {
 		/*
 		 * Change the type of record being inserted
 		 */
-		
 
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(new Color(118, 179, 220));
 		panel.setBounds(260, 47, 480, 388);
 		add(panel);
-		
+
 		JLabel lblNewLabel_2 = new JLabel("Insert Record");
 		lblNewLabel_2.setFont(new Font("Songti TC", Font.PLAIN, 20));
 		lblNewLabel_2.setBounds(187, 21, 134, 16);
 		panel.add(lblNewLabel_2);
-		
+
 		JButton btnNewBeneficiary = new JButton("new");
 		btnNewBeneficiary.setBounds(419, 90, 61, 29);
 		panel.add(btnNewBeneficiary);
-		
+
 		JComboBox Vaccinater_CB = new JComboBox();
 		Vaccinater_CB.setBounds(168, 299, 254, 27);
 //		  try {
@@ -167,7 +164,7 @@ public class AddRecordPanel extends JPanel {
 //	            e1.printStackTrace();
 //	        }
 		panel.add(Vaccinater_CB);
-		
+
 		JComboBox Donor_CB = new JComboBox();
 		Donor_CB.setBounds(168, 338, 254, 27);
 //		try {
@@ -185,24 +182,23 @@ public class AddRecordPanel extends JPanel {
 //            e1.printStackTrace();
 //        }
 		panel.add(Donor_CB);
-		
+
 		JButton btnNewVaccinater = new JButton("new");
 		btnNewVaccinater.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AddVaccinaterFrame addVaccinaterFrame=new AddVaccinaterFrame(Vaccinater_CB);
+				AddVaccinaterFrame addVaccinaterFrame = new AddVaccinaterFrame(Vaccinater_CB);
 				addVaccinaterFrame.setVisible(true);
 			}
 		});
 		btnNewVaccinater.setBounds(419, 298, 61, 29);
 		panel.add(btnNewVaccinater);
-		
+
 		JButton btnNewDonor = new JButton("new");
 		btnNewDonor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AddDonorFrame addDonorFrame = new AddDonorFrame(Donor_CB);
 				addDonorFrame.setVisible(true);
-				
-				
+
 			}
 		});
 		btnNewDonor.setBounds(419, 337, 61, 29);
@@ -212,22 +208,29 @@ public class AddRecordPanel extends JPanel {
 				AddBeneficiaryFrame.main(null);
 			}
 		});
-		
+
 		JComboBox record_CB = new JComboBox();
-		String[] recordsArr = { "","Vaccination", "Predation", "Slaughter", "Sales" };
+		String[] recordsArr = { "", "Vaccination", "Predation", "Disease", "Slaughter", "Sales" };
 		for (int i = 0; i < recordsArr.length; i++) {
 			record_CB.addItem(recordsArr[i]);
 		}
-		
-		
+
 		record_CB.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (record_CB.getSelectedItem() == "Vaccination") {
+				if (record_CB.getSelectedItem().equals("Vaccination")) {
 					removeCurrentPanel();
-					InsertVaccinationPanel vpanel = new InsertVaccinationPanel(bName_TF,fName_TF,year_CB,season_CB,date_TF,Vaccinater_CB,Donor_CB);
-					currentPanel=vpanel;
+					InsertVaccinationPanel vpanel = new InsertVaccinationPanel(bName_TF, fName_TF, year_CB, season_CB,
+							date_TF, Vaccinater_CB, Donor_CB);
+					currentPanel = vpanel;
 					contentPanel.add(vpanel);
+				} else if (record_CB.getSelectedItem().equals("Predation")) {
+					removeCurrentPanel();
+					InsertPredationPanel ppanel = new InsertPredationPanel(bName_TF, fName_TF, year_CB, season_CB,
+							date_TF, Vaccinater_CB, Donor_CB);
+					currentPanel = ppanel;
+					contentPanel.add(ppanel);
 				}
+
 				else {
 					removeCurrentPanel();
 				}
@@ -236,14 +239,13 @@ public class AddRecordPanel extends JPanel {
 		record_CB.setBounds(436, 455, 245, 27);
 		add(record_CB);
 
-		
-
 	}
+
 	private void removeCurrentPanel() {
 		if (currentPanel != null) {
 			contentPanel.remove(currentPanel);
 			contentPanel.revalidate();
-            contentPanel.repaint();
+			contentPanel.repaint();
 		}
 	}
 }
