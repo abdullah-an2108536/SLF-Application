@@ -6,7 +6,6 @@ import java.awt.Dimension;
 import java.sql.SQLException;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
-import net.proteanit.sql.DbUtils;
 import utility.Utility;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -50,7 +49,7 @@ public class SearchBeneficiaryDataPanel extends JPanel {
         Search.setFont(new Font("Lucida Grande", Font.BOLD, 15));
         Search.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		try {
+        		/*try {
                     Utility ut = new Utility();
                     String sql = "SELECT BID AS \"ID\", BNAME AS \"Name\", FATHERNAME AS \"Father Name\", VILLAGE AS \"Village\", CNAME AS \"Community\" FROM BENEFICIARY WHERE BNAME = ?";
                     ut.pstmt=ut.conn.prepareStatement(sql);
@@ -59,7 +58,7 @@ public class SearchBeneficiaryDataPanel extends JPanel {
                     table.setModel(DbUtils.resultSetToTableModel(ut.rs));
                 } catch (SQLException e1) {
                     e1.printStackTrace();
-                }
+                }*/
         		
         	}
         });
@@ -80,5 +79,7 @@ public class SearchBeneficiaryDataPanel extends JPanel {
         scrollPane.setViewportView(table);
 
     }
+
+
 }
 
