@@ -79,24 +79,24 @@ public class Login extends JFrame {
         JButton loginBTN = new JButton("LOGIN");
         loginBTN.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                try {
-                    Utility ut = new Utility();
-                    String sql = "SELECT USERNAME,USERPASSWORD FROM LOGIN WHERE USERNAME=? AND USERPASSWORD=?";
-                    ut.pstmt = ut.conn.prepareStatement(sql);
-                    ut.pstmt.setString(1, usernameTF.getText());
-                    ut.pstmt.setString(2, passwordTF.getPassword().toString());
-                    ut.rs = ut.pstmt.executeQuery();
-                    if (ut.rs.next()) {
+//                try {
+//                    Utility ut = new Utility();
+//                    String sql = "SELECT USERNAME,USERPASSWORD FROM LOGIN WHERE USERNAME=? AND USERPASSWORD=?";
+//                    ut.pstmt = ut.conn.prepareStatement(sql);
+//                    ut.pstmt.setString(1, usernameTF.getText());
+//                    ut.pstmt.setString(2, passwordTF.getPassword().toString());
+//                    ut.rs = ut.pstmt.executeQuery();
+//                    if (ut.rs.next()) {
                         MainMenu.main(null);
                         dispose();
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Username or Password is incorrect, please try again");
-                        ut.conn.close();
-                    }
-
-                } catch (SQLException e1) {
-                    JOptionPane.showMessageDialog(null, "Username or Password is incorrect, TRY AGAIN");
-                }
+//                    } else {
+//                        JOptionPane.showMessageDialog(null, "Username or Password is incorrect, please try again");
+//                        ut.conn.close();
+//                    }
+//
+//                } catch (SQLException e1) {
+//                    JOptionPane.showMessageDialog(null, "Username or Password is incorrect, TRY AGAIN");
+//                }
 
             }
         });

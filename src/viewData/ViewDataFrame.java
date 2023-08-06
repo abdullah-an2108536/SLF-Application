@@ -1,7 +1,5 @@
 package viewData;
 
-import panels.ViewBeneficiaryDataPanel;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -36,21 +34,42 @@ public class ViewDataFrame extends JFrame {
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                switchToPanel(new JPanel());
+                switchToPanel(new ViewCommunityDataPanel());
             }
         });
         sidePanel.add(button2);
 
         currentPanel = new JPanel();
         currentPanel.setBackground(new Color(254, 255, 255));
-        currentPanel.setLayout(null); // AbsoluteLayout
+        currentPanel.setLayout(null);
 
         contentPanel = new JPanel(new BorderLayout());
         contentPanel.add(currentPanel, BorderLayout.CENTER);
 
-        setLayout(new BorderLayout());
-        add(sidePanel, BorderLayout.WEST);
-        add(contentPanel, BorderLayout.CENTER);
+        getContentPane().setLayout(new BorderLayout());
+        getContentPane().add(sidePanel, BorderLayout.WEST);
+        
+        JButton button2_1 = new JButton(" ");
+        button2_1.setBounds(6, 270, 178, 60);
+        sidePanel.add(button2_1);
+        
+        JButton button2_1_1 = new JButton(" ");
+        button2_1_1.setBounds(6, 341, 178, 60);
+        sidePanel.add(button2_1_1);
+        
+        JButton button2_1_1_1 = new JButton(" ");
+        button2_1_1_1.setBounds(6, 413, 178, 60);
+        sidePanel.add(button2_1_1_1);
+        
+        JButton button2_1_1_1_1 = new JButton(" ");
+        button2_1_1_1_1.setBounds(6, 485, 178, 60);
+        sidePanel.add(button2_1_1_1_1);
+        
+        JButton logoBTN = new JButton("Logo Button");
+        logoBTN.setBounds(6, 6, 178, 108);
+        logoBTN.setIcon(new ImageIcon("SLF-Logo.png"));
+        sidePanel.add(logoBTN);
+        getContentPane().add(contentPanel, BorderLayout.CENTER);
 
         setLocationRelativeTo(null);
         setVisible(true);

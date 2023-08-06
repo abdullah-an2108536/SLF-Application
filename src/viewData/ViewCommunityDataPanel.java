@@ -1,20 +1,20 @@
-package panels;
+package viewData;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class ViewBeneficiaryDataPanel extends JPanel {
+public class ViewCommunityDataPanel extends JPanel {
     private JTable table;
-    private SearchBeneficiaryDataPanel searchBeneficiaryDataPanel;
+    private JTextField txtV;
 
 
     /**
      * Create the panel.
      */
-    public ViewBeneficiaryDataPanel() {
-        setBackground(new Color(255, 255, 255));
+    public ViewCommunityDataPanel() {
+        setBackground(SystemColor.menu);
         setLayout(null);
-        setPreferredSize(new Dimension(709, 559));
+        setPreferredSize(new Dimension(739, 637));
 
         table = new JTable();
         table.setForeground(new Color(0, 0, 0));
@@ -24,8 +24,15 @@ public class ViewBeneficiaryDataPanel extends JPanel {
 
         // Wrap the table in a JScrollPane to make it scrollable
         JScrollPane scrollPane = new JScrollPane(table);
-        scrollPane.setBounds(35, 105, 631, 424);
+        scrollPane.setBounds(20, 81, 702, 539);
         add(scrollPane);
+        
+        txtV = new JTextField();
+        txtV.setFont(new Font("Microsoft Sans Serif", Font.PLAIN, 24));
+        txtV.setText("View Community Data");
+        txtV.setBounds(247, 30, 250, 26);
+        add(txtV);
+        txtV.setColumns(10);
 
 //        try {
 //            Utility ut = new Utility();
