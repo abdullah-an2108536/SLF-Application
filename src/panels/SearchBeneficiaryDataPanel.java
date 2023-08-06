@@ -1,54 +1,43 @@
 package panels;
 
-import javax.swing.JPanel;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.sql.SQLException;
-import javax.swing.JTable;
-import javax.swing.JScrollPane;
-import utility.Utility;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import java.awt.event.ActionListener;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.Font;
-import javax.swing.SwingConstants;
+import java.awt.event.ActionListener;
 
 public class SearchBeneficiaryDataPanel extends JPanel {
-	private JTextField textField;
-	private JTable table;
+    private JTextField textField;
+    private JTable table;
 
     /**
      * Create the panel.
      */
     public SearchBeneficiaryDataPanel() {
-    	setForeground(new Color(255, 255, 255));
+        setForeground(new Color(255, 255, 255));
         setBackground(new Color(255, 255, 255));
         setLayout(null);
         setPreferredSize(new Dimension(882, 701));
-        
+
         JLabel lblNewLabel = new JLabel("Beneficiary Name");
         lblNewLabel.setBackground(new Color(0, 0, 0));
         lblNewLabel.setForeground(new Color(0, 0, 0));
         lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
         lblNewLabel.setBounds(151, 29, 189, 19);
         add(lblNewLabel);
-        
+
         textField = new JTextField();
         textField.setHorizontalAlignment(SwingConstants.CENTER);
         textField.setBounds(380, 21, 415, 41);
         add(textField);
         textField.setColumns(10);
-        
 
-        
+
         JButton Search = new JButton("SEARCH");
         Search.setForeground(Color.BLACK);
         Search.setBackground(new Color(118, 179, 221));
         Search.setFont(new Font("Lucida Grande", Font.BOLD, 15));
         Search.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e) {
         		/*try {
                     Utility ut = new Utility();
                     String sql = "SELECT BID AS \"ID\", BNAME AS \"Name\", FATHERNAME AS \"Father Name\", VILLAGE AS \"Village\", CNAME AS \"Community\" FROM BENEFICIARY WHERE BNAME = ?";
@@ -59,12 +48,12 @@ public class SearchBeneficiaryDataPanel extends JPanel {
                 } catch (SQLException e1) {
                     e1.printStackTrace();
                 }*/
-        		
-        	}
+
+            }
         });
         Search.setBounds(394, 102, 189, 41);
         add(Search);
-        
+
         // Create a JScrollPane and add the JTable to it
         JScrollPane scrollPane = new JScrollPane();
         scrollPane.setBounds(6, 203, 868, 235);

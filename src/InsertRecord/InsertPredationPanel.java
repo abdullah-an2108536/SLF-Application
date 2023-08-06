@@ -1,120 +1,110 @@
 package insertRecord;
 
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
-import utility.Utility;
-
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
-import java.sql.SQLException;
-
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
+import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class InsertPredationPanel extends JPanel {
-	
+
 //	private JTextField bName_TF;
 
-	/**
-	 * Create the panel.
-	 * @param donor_CB 
-	 * @param vaccinater_CB 
-	 * @param date_TF 
-	 * @param season_CB 
-	 * @param year_CB 
-	 * @param fName_TF 
-	 */
-	public InsertPredationPanel(JTextField bName_TF, JTextField fName_TF, JComboBox year_CB, JComboBox season_CB, JTextField date_TF, JComboBox vaccinater_CB, JComboBox donor_CB) {
-		
+    /**
+     * Create the panel.
+     *
+     * @param donor_CB
+     * @param vaccinater_CB
+     * @param date_TF
+     * @param season_CB
+     * @param year_CB
+     * @param fName_TF
+     */
+    public InsertPredationPanel(JTextField bName_TF, JTextField fName_TF, JComboBox year_CB, JComboBox season_CB, JTextField date_TF, JComboBox vaccinater_CB, JComboBox donor_CB) {
+
 //		this.bName_TF=bName_TF;
-		
-		
-		setLayout(null);
-		
-		JComboBox goatCB = new JComboBox();
-		goatCB.setBounds(19, 152, 83, 27);
-		for (int i = 0; i < 99; i++) {
-			goatCB.addItem(i);
-		}
-		add(goatCB);
-		
-		JLabel lblNewLabel_2_1 = new JLabel("Predation Record");
-		lblNewLabel_2_1.setBounds(185, 6, 167, 16);
-		add(lblNewLabel_2_1);
-		
-		JLabel lblNewLabel_1_1_2 = new JLabel("Predator Type");
-		lblNewLabel_1_1_2.setBounds(41, 50, 107, 16);
-		add(lblNewLabel_1_1_2);
-		
-		JComboBox type_CB = new JComboBox();
-		type_CB.setBounds(179, 46, 229, 27);
-		add(type_CB);
-		
-		JLabel lblNewLabel_1_1_1_1_1 = new JLabel("Sheep");
-		lblNewLabel_1_1_1_1_1.setBounds(315, 124, 37, 16);
-		add(lblNewLabel_1_1_1_1_1);
-		
-		JLabel lblNewLabel_1_1_1_1_1_1 = new JLabel("Goat");
-		lblNewLabel_1_1_1_1_1_1.setBounds(41, 124, 61, 16);
-		add(lblNewLabel_1_1_1_1_1_1);
-		
-		JLabel lblNewLabel_1_1_1_1_1_2 = new JLabel("Cattle");
-		lblNewLabel_1_1_1_1_1_2.setBounds(122, 124, 61, 16);
-		add(lblNewLabel_1_1_1_1_1_2);
-		
-		JLabel lblNewLabel_1_1_1_1_1_3 = new JLabel("Dozoo or Yak");
-		lblNewLabel_1_1_1_1_1_3.setBounds(195, 124, 85, 16);
-		add(lblNewLabel_1_1_1_1_1_3);
-		
-		JLabel lblNewLabel_2_1_1 = new JLabel("# Livestock killed by this predator");
-		lblNewLabel_2_1_1.setBounds(155, 96, 218, 16);
-		add(lblNewLabel_2_1_1);
-		
-		JLabel lblNewLabel_1_1_1_1_1_4 = new JLabel("Other");
-		lblNewLabel_1_1_1_1_1_4.setBounds(387, 124, 61, 16);
-		add(lblNewLabel_1_1_1_1_1_4);
-		
-		JComboBox cattleCB = new JComboBox();
-		cattleCB.setBounds(100, 152, 83, 27);
-		for (int i = 0; i < 99; i++) {
-			cattleCB.addItem(i);
-		}
-		add(cattleCB);
-		
-		JComboBox yakCB = new JComboBox();
-		yakCB.setBounds(195, 152, 83, 27);
-		for (int i = 0; i < 99; i++) {
-			yakCB.addItem(i);
-		}
-		add(yakCB);
-		
-		JComboBox sheepCB = new JComboBox();
-		sheepCB.setBounds(290, 152, 83, 27);
-		for (int i = 0; i < 99; i++) {
-			sheepCB.addItem(i);
-		}
-		add(sheepCB);
-		
-		JComboBox otherCB = new JComboBox();
-		otherCB.setBounds(375, 152, 83, 27);
-		for (int i = 0; i < 99; i++) {
-			otherCB.addItem(i);
-		}
-		add(otherCB);
-		
-		JButton submitButton = new JButton("Submit Predation Record"); 
-		submitButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String text= bName_TF.getText();
-				System.out.println(text);
-				
-			}
-		});
-		submitButton.setBounds(136, 199, 204, 29);
+
+
+        setLayout(null);
+
+        JComboBox goatCB = new JComboBox();
+        goatCB.setBounds(19, 152, 83, 27);
+        for (int i = 0; i < 99; i++) {
+            goatCB.addItem(i);
+        }
+        add(goatCB);
+
+        JLabel lblNewLabel_2_1 = new JLabel("Predation Record");
+        lblNewLabel_2_1.setBounds(185, 6, 167, 16);
+        add(lblNewLabel_2_1);
+
+        JLabel lblNewLabel_1_1_2 = new JLabel("Predator Type");
+        lblNewLabel_1_1_2.setBounds(41, 50, 107, 16);
+        add(lblNewLabel_1_1_2);
+
+        JComboBox type_CB = new JComboBox();
+        type_CB.setBounds(179, 46, 229, 27);
+        add(type_CB);
+
+        JLabel lblNewLabel_1_1_1_1_1 = new JLabel("Sheep");
+        lblNewLabel_1_1_1_1_1.setBounds(315, 124, 37, 16);
+        add(lblNewLabel_1_1_1_1_1);
+
+        JLabel lblNewLabel_1_1_1_1_1_1 = new JLabel("Goat");
+        lblNewLabel_1_1_1_1_1_1.setBounds(41, 124, 61, 16);
+        add(lblNewLabel_1_1_1_1_1_1);
+
+        JLabel lblNewLabel_1_1_1_1_1_2 = new JLabel("Cattle");
+        lblNewLabel_1_1_1_1_1_2.setBounds(122, 124, 61, 16);
+        add(lblNewLabel_1_1_1_1_1_2);
+
+        JLabel lblNewLabel_1_1_1_1_1_3 = new JLabel("Dozoo or Yak");
+        lblNewLabel_1_1_1_1_1_3.setBounds(195, 124, 85, 16);
+        add(lblNewLabel_1_1_1_1_1_3);
+
+        JLabel lblNewLabel_2_1_1 = new JLabel("# Livestock killed by this predator");
+        lblNewLabel_2_1_1.setBounds(155, 96, 218, 16);
+        add(lblNewLabel_2_1_1);
+
+        JLabel lblNewLabel_1_1_1_1_1_4 = new JLabel("Other");
+        lblNewLabel_1_1_1_1_1_4.setBounds(387, 124, 61, 16);
+        add(lblNewLabel_1_1_1_1_1_4);
+
+        JComboBox cattleCB = new JComboBox();
+        cattleCB.setBounds(100, 152, 83, 27);
+        for (int i = 0; i < 99; i++) {
+            cattleCB.addItem(i);
+        }
+        add(cattleCB);
+
+        JComboBox yakCB = new JComboBox();
+        yakCB.setBounds(195, 152, 83, 27);
+        for (int i = 0; i < 99; i++) {
+            yakCB.addItem(i);
+        }
+        add(yakCB);
+
+        JComboBox sheepCB = new JComboBox();
+        sheepCB.setBounds(290, 152, 83, 27);
+        for (int i = 0; i < 99; i++) {
+            sheepCB.addItem(i);
+        }
+        add(sheepCB);
+
+        JComboBox otherCB = new JComboBox();
+        otherCB.setBounds(375, 152, 83, 27);
+        for (int i = 0; i < 99; i++) {
+            otherCB.addItem(i);
+        }
+        add(otherCB);
+
+        JButton submitButton = new JButton("Submit Predation Record");
+        submitButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String text = bName_TF.getText();
+                System.out.println(text);
+
+            }
+        });
+        submitButton.setBounds(136, 199, 204, 29);
 		/*
 		  try {
 					Utility ut = new Utility();
@@ -216,20 +206,20 @@ public class InsertPredationPanel extends JPanel {
 
 			}
 		 */
-		add(submitButton);
-		
-		JButton btnNewButton = new JButton("new");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				AddPredationTypeFrame addPredationTypeFrame = new AddPredationTypeFrame(type_CB);
-				addPredationTypeFrame.setVisible(true);
-				
-				
-			}
-		});
-		btnNewButton.setBounds(404, 45, 70, 29);
-		add(btnNewButton);
+        add(submitButton);
 
-	}
+        JButton btnNewButton = new JButton("new");
+        btnNewButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                AddPredationTypeFrame addPredationTypeFrame = new AddPredationTypeFrame(type_CB);
+                addPredationTypeFrame.setVisible(true);
+
+
+            }
+        });
+        btnNewButton.setBounds(404, 45, 70, 29);
+        add(btnNewButton);
+
+    }
 
 }

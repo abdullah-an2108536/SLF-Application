@@ -1,65 +1,55 @@
 package insertRecord;
 
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
-import utility.Utility;
-
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
-import java.sql.SQLException;
-
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
+import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class InsertSalesPanel extends JPanel {
-	
+
 //	private JTextField bName_TF;
 
-	/**
-	 * Create the panel.
-	 * @param donor_CB 
-	 * @param vaccinater_CB 
-	 * @param date_TF 
-	 * @param season_CB 
-	 * @param year_CB 
-	 * @param fName_TF 
-	 */
-	public InsertSalesPanel(JTextField bName_TF, JTextField fName_TF, JComboBox year_CB, JComboBox season_CB, JTextField date_TF, JComboBox vaccinater_CB, JComboBox donor_CB) {
-		
+    /**
+     * Create the panel.
+     *
+     * @param donor_CB
+     * @param vaccinater_CB
+     * @param date_TF
+     * @param season_CB
+     * @param year_CB
+     * @param fName_TF
+     */
+    public InsertSalesPanel(JTextField bName_TF, JTextField fName_TF, JComboBox year_CB, JComboBox season_CB, JTextField date_TF, JComboBox vaccinater_CB, JComboBox donor_CB) {
+
 //		this.bName_TF=bName_TF;
-		
-		
-		setLayout(null);
-		
-		JComboBox smallAnimalCB = new JComboBox();
-		smallAnimalCB.setBounds(41, 99, 109, 27);
-		for (int i = 0; i < 99; i++) {
-			smallAnimalCB.addItem(i);
-		}
-		add(smallAnimalCB);
-		
-		JLabel lblNewLabel_2_1 = new JLabel("Sales Record");
-		lblNewLabel_2_1.setBounds(190, 23, 115, 16);
-		add(lblNewLabel_2_1);
-		
-		JLabel lblNewLabel_1_1_1_1_1_1 = new JLabel("Sheep Sold");
-		lblNewLabel_1_1_1_1_1_1.setBounds(62, 75, 75, 16);
-		add(lblNewLabel_1_1_1_1_1_1);
 
 
-		JButton submitButton = new JButton("Submit Sales Record"); 
-		submitButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String text= bName_TF.getText();
-				System.out.println(text);
-				
-			}
-		});
-		submitButton.setBounds(149, 203, 204, 29);
+        setLayout(null);
+
+        JComboBox smallAnimalCB = new JComboBox();
+        smallAnimalCB.setBounds(41, 99, 109, 27);
+        for (int i = 0; i < 99; i++) {
+            smallAnimalCB.addItem(i);
+        }
+        add(smallAnimalCB);
+
+        JLabel lblNewLabel_2_1 = new JLabel("Sales Record");
+        lblNewLabel_2_1.setBounds(190, 23, 115, 16);
+        add(lblNewLabel_2_1);
+
+        JLabel lblNewLabel_1_1_1_1_1_1 = new JLabel("Sheep Sold");
+        lblNewLabel_1_1_1_1_1_1.setBounds(62, 75, 75, 16);
+        add(lblNewLabel_1_1_1_1_1_1);
+
+
+        JButton submitButton = new JButton("Submit Sales Record");
+        submitButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String text = bName_TF.getText();
+                System.out.println(text);
+
+            }
+        });
+        submitButton.setBounds(149, 203, 204, 29);
 		/*
 		  try {
 					Utility ut = new Utility();
@@ -161,33 +151,33 @@ public class InsertSalesPanel extends JPanel {
 
 			}
 		 */
-		add(submitButton);
-		
-		JComboBox smallAnimalCB_1 = new JComboBox();
-		smallAnimalCB_1.setBounds(185, 99, 109, 27);
-		add(smallAnimalCB_1);
-		
-		JLabel lblNewLabel_1_1_1_1_1_1_1 = new JLabel("Cattle Sold");
-		lblNewLabel_1_1_1_1_1_1_1.setBounds(206, 75, 75, 16);
-		add(lblNewLabel_1_1_1_1_1_1_1);
-		
-		JComboBox smallAnimalCB_1_1 = new JComboBox();
-		smallAnimalCB_1_1.setBounds(335, 99, 109, 27);
-		add(smallAnimalCB_1_1);
-		
-		JLabel lblNewLabel_1_1_1_1_1_1_1_1 = new JLabel("Goat Sold");
-		lblNewLabel_1_1_1_1_1_1_1_1.setBounds(356, 75, 75, 16);
-		add(lblNewLabel_1_1_1_1_1_1_1_1);
-		
-		JLabel lblNewLabel = new JLabel("Per Animal Cost (PKR)");
-		lblNewLabel.setBounds(78, 157, 140, 16);
-		add(lblNewLabel);
-		
-		JTextField animalCostTF = new JTextField();
-		animalCostTF.setBounds(241, 152, 166, 26);
-		add(animalCostTF);
-		animalCostTF.setColumns(10);
+        add(submitButton);
 
-	}
+        JComboBox smallAnimalCB_1 = new JComboBox();
+        smallAnimalCB_1.setBounds(185, 99, 109, 27);
+        add(smallAnimalCB_1);
+
+        JLabel lblNewLabel_1_1_1_1_1_1_1 = new JLabel("Cattle Sold");
+        lblNewLabel_1_1_1_1_1_1_1.setBounds(206, 75, 75, 16);
+        add(lblNewLabel_1_1_1_1_1_1_1);
+
+        JComboBox smallAnimalCB_1_1 = new JComboBox();
+        smallAnimalCB_1_1.setBounds(335, 99, 109, 27);
+        add(smallAnimalCB_1_1);
+
+        JLabel lblNewLabel_1_1_1_1_1_1_1_1 = new JLabel("Goat Sold");
+        lblNewLabel_1_1_1_1_1_1_1_1.setBounds(356, 75, 75, 16);
+        add(lblNewLabel_1_1_1_1_1_1_1_1);
+
+        JLabel lblNewLabel = new JLabel("Per Animal Cost (PKR)");
+        lblNewLabel.setBounds(78, 157, 140, 16);
+        add(lblNewLabel);
+
+        JTextField animalCostTF = new JTextField();
+        animalCostTF.setBounds(241, 152, 166, 26);
+        add(animalCostTF);
+        animalCostTF.setColumns(10);
+
+    }
 
 }

@@ -1,18 +1,7 @@
 package panels;
 
-import javax.swing.JPanel;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.sql.SQLException;
-import javax.swing.JTable;
-import javax.swing.JScrollPane;
-import net.proteanit.sql.DbUtils;
-import utility.Utility;
-import javax.swing.JButton;
-import java.awt.Font;
-import javax.swing.JLabel;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.*;
+import java.awt.*;
 
 public class ViewBeneficiaryDataPanel extends JPanel {
     private JTable table;
