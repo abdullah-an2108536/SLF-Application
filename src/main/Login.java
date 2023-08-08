@@ -84,6 +84,7 @@ public class Login extends JFrame {
 		        if (ut.conn != null) {
 		            MainMenu.main(null);
 		            dispose();
+		            ut.terminate();
 		        } else {
 		            JOptionPane.showMessageDialog(null, "Username or Password is incorrect, TRY AGAIN");
 		        }

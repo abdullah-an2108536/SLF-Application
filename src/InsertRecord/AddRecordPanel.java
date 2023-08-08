@@ -127,7 +127,7 @@ public class AddRecordPanel extends JPanel {
 
         JLabel lblNewLabel_2 = new JLabel("Insert Record");
         lblNewLabel_2.setFont(new Font("Songti TC", Font.PLAIN, 20));
-        lblNewLabel_2.setBounds(187, 21, 134, 16);
+        lblNewLabel_2.setBounds(207, 25, 134, 16);
         panel.add(lblNewLabel_2);
 
         JButton btnNewBeneficiary = new JButton("new");

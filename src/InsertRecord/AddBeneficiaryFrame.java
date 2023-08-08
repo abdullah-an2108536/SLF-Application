@@ -2,9 +2,14 @@ package insertRecord;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import utility.Utility;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.List;
 
 public class AddBeneficiaryFrame extends JFrame {
 
@@ -101,6 +106,36 @@ public class AddBeneficiaryFrame extends JFrame {
         beneficiaryTF.setColumns(10);
 
         JButton submitBTN = new JButton("Submit");
+        submitBTN.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		Utility ut=new Utility();
+        		 String beneficiaryName = beneficiaryTF.getText();
+                 String fatherName = fatherTF.getText();
+                 String selectedVillage = (String) villageCB.getSelectedItem();
+                 String selectedCommunity = (String) communityCB.getSelectedItem();
+
+                 try {
+                     String insertQuery = "INSERT INTO BENEFICIARY (BName, FatherName, Village, CName) VALUES (?, ?, ?, ?)";
+                     ut.pstmt = ut.conn.prepareStatement(insertQuery);
+                     ut.pstmt.setString(1, beneficiaryName);
+                     ut.pstmt.setString(2, fatherName);
+                     ut.pstmt.setString(3, selectedVillage);
+                     ut.pstmt.setString(4, selectedCommunity);
+
+                     int rowsAffected = ut.pstmt.executeUpdate();
+                     if (rowsAffected > 0) {
+                         JOptionPane.showMessageDialog(null, "Beneficiary added successfully.");
+                     } else {
+                         JOptionPane.showMessageDialog(null, "Failed to add beneficiary.");
+                     }
+
+                     ut.pstmt.close();
+                 } catch (SQLException ex) {
+                     ex.printStackTrace();
+                     JOptionPane.showMessageDialog(null, "An error occurred while adding beneficiary.");
+                 }
+        	}
+        });
         submitBTN.setBounds(211, 235, 117, 29);
         panel.add(submitBTN);
 
@@ -114,5 +149,17 @@ public class AddBeneficiaryFrame extends JFrame {
         });
         newVillageBTN.setBounds(367, 147, 78, 29);
         panel.add(newVillageBTN);
+
+        // Populate village and community combo boxes
+        Utility ut = new Utility();
+        List<String> villageNames = ut.getUniqueVillages();
+        for (String village : villageNames) {
+            villageCB.addItem(village);
+        }
+
+        List<String> communityNames = ut.getUniqueCommunities();
+        for (String community : communityNames) {
+            communityCB.addItem(community);
+        }
     }
 }

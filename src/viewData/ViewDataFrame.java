@@ -11,15 +11,16 @@ public class ViewDataFrame extends JFrame {
     private JPanel contentPanel;
 
     public ViewDataFrame() {
+    	setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(928, 665);
+        setSize(1082, 751);
 
         JPanel sidePanel = new JPanel();
         sidePanel.setPreferredSize(new Dimension(190, getHeight()));
         sidePanel.setBackground(new Color(118, 185, 255));
 
         JButton button1 = new JButton("View Beneficiary Data");
-        button1.setBounds(6, 126, 178, 60);
+        button1.setBounds(6, 126, 178, 34);
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -30,7 +31,7 @@ public class ViewDataFrame extends JFrame {
         sidePanel.add(button1);
 
         JButton button2 = new JButton("View Community Data");
-        button2.setBounds(6, 198, 178, 60);
+        button2.setBounds(6, 162, 178, 34);
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
