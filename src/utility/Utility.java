@@ -112,4 +112,49 @@ public class Utility {
 		}
 		return communities;
 	}
+	
+	public List<String> getUniqueVaccinaters() {
+		List<String> communities = new ArrayList<>();
+		String query = "SELECT DISTINCT Vaccinater FROM Vaccination_Record"; // Replace with your table name
+		try (
+				PreparedStatement preparedStatement = conn.prepareStatement(query);
+				ResultSet resultSet = preparedStatement.executeQuery()) {
+			while (resultSet.next()) {
+				communities.add(resultSet.getString("Vaccinater"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return communities;
+	}
+	
+	public List<String> getUniqueDonors() {
+		List<String> communities = new ArrayList<>();
+		String query = "SELECT DISTINCT donor FROM Vaccination_Record"; // Replace with your table name
+		try (
+				PreparedStatement preparedStatement = conn.prepareStatement(query);
+				ResultSet resultSet = preparedStatement.executeQuery()) {
+			while (resultSet.next()) {
+				communities.add(resultSet.getString("donor"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return communities;
+	}
+	
+	public List<String> getUniqueDvtype() {
+		List<String> communities = new ArrayList<>();
+		String query = "SELECT DISTINCT VaccinationType FROM Vrecord"; // Replace with your table name
+		try (
+				PreparedStatement preparedStatement = conn.prepareStatement(query);
+				ResultSet resultSet = preparedStatement.executeQuery()) {
+			while (resultSet.next()) {
+				communities.add(resultSet.getString("VaccinationType"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return communities;
+	}
 }

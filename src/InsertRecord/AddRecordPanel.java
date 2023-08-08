@@ -2,10 +2,14 @@ package insertRecord;
 
 import javax.swing.*;
 import javax.swing.border.MatteBorder;
+
+import utility.Utility;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
+import java.util.List;
 
 @SuppressWarnings("serial")
 public class AddRecordPanel extends JPanel {
@@ -23,6 +27,8 @@ public class AddRecordPanel extends JPanel {
      */
     @SuppressWarnings({"rawtypes", "unchecked"})
     public AddRecordPanel() {
+    	
+    	Utility ut=new Utility();
 
         setBorder(new MatteBorder(0, 1, 1, 1, (Color) Color.WHITE));
         setBackground(new Color(254, 255, 255));
@@ -85,8 +91,8 @@ public class AddRecordPanel extends JPanel {
         add(lblNewLabel_1_3);
 
         date_TF = new JTextField();
-        date_TF.setText("MM/DD/YYYY");
-        date_TF.setToolTipText("MM/DD/YYYY");
+        date_TF.setText("YYYY-MM-DD");
+        date_TF.setToolTipText("YYYY-MM-DD");
         date_TF.setColumns(10);
         date_TF.setBounds(432, 303, 249, 26);
         add(date_TF);
@@ -136,38 +142,18 @@ public class AddRecordPanel extends JPanel {
 
         JComboBox Vaccinater_CB = new JComboBox();
         Vaccinater_CB.setBounds(168, 299, 254, 27);
-//		  try {
-//	            Utility ut = new Utility();
-//	            String sql = "SELECT UNIQUE VACCINATER FROM VACCINATION_RECORD";
-//	            ut.stmt=ut.conn.prepareStatement(sql);
-//	            ut.rs = ut.stmt.executeQuery(sql);
-//	            
-//	            while(ut.rs.next()) {
-//	            	Vaccinater_CB.addItem(ut.rs.getString(0));
-//	            }
-//	            
-//	            ut.terminate();     
-//	        } catch (SQLException e1) {
-//	            e1.printStackTrace();
-//	        }
+        List<String> vaccinaterNames = ut.getUniqueVaccinaters();
+        for (String vacc : vaccinaterNames) {
+        	Vaccinater_CB.addItem(vacc);
+        }
         panel.add(Vaccinater_CB);
 
         JComboBox Donor_CB = new JComboBox();
         Donor_CB.setBounds(168, 338, 254, 27);
-//		try {
-//            Utility ut = new Utility();
-//            String sql = "SELECT UNIQUE DONOR FROM VACCINATION_RECORD";
-//            ut.stmt=ut.conn.prepareStatement(sql);
-//            ut.rs = ut.stmt.executeQuery(sql);
-//            
-//            while(ut.rs.next()) {
-//            	Donor_CB.addItem(ut.rs.getString(0));
-//            }
-//            
-//            ut.terminate();     
-//        } catch (SQLException e1) {
-//            e1.printStackTrace();
-//        }
+        List<String> donorNames = ut.getUniqueDonors();
+        for (String donor : donorNames) {
+        	Donor_CB.addItem(donor);
+        }
         panel.add(Donor_CB);
 
         JButton btnNewVaccinater = new JButton("new");
