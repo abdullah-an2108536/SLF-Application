@@ -157,4 +157,34 @@ public class Utility {
 		}
 		return communities;
 	}
+	
+	public List<String> getUniquePype() {
+		List<String> communities = new ArrayList<>();
+		String query = "SELECT DISTINCT PredatorType FROM Predation_Record"; // Replace with your table name
+		try (
+				PreparedStatement preparedStatement = conn.prepareStatement(query);
+				ResultSet resultSet = preparedStatement.executeQuery()) {
+			while (resultSet.next()) {
+				communities.add(resultSet.getString("PredatorType"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return communities;
+	}
+	
+	public List<String> getUniqueDtype() {
+		List<String> communities = new ArrayList<>();
+		String query = "SELECT DISTINCT DiseaseType FROM Disease_Record"; // Replace with your table name
+		try (
+				PreparedStatement preparedStatement = conn.prepareStatement(query);
+				ResultSet resultSet = preparedStatement.executeQuery()) {
+			while (resultSet.next()) {
+				communities.add(resultSet.getString("DiseaseType"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return communities;
+	}
 }
