@@ -98,7 +98,7 @@ public class InsertSalesPanel extends JPanel {
 					if (!ut.rs.next()) {
 						sql = "INSERT INTO VACCINATION_RECORD (VYEAR,season,VDATE,VACCINATER,DONOR,BID,BANIMALSLAUGHTERED,\n"
 								+ "SANIMALSLAUGHTERED,\n" + "SHEEPSOLD,\n" + "CATTLESOLD,\n" + "GOATSOLD,\n"
-								+ "PERANIMALCOST) VALUES (?,?,?,?,?,?,0,0,0,0,0,0)"; // temp value of 0 for some
+								+ "PERSOLDANIMALCOST) VALUES (?,?,?,?,?,?,0,0,0,0,0,0)"; // temp value of 0 for some
 																						// attributes
 						ut.pstmt = ut.conn.prepareStatement(sql);
 						ut.pstmt.setString(1, year_CB.getSelectedItem().toString());
@@ -138,7 +138,7 @@ public class InsertSalesPanel extends JPanel {
 					}
 
 					// Add Slaughter Values
-					sql = "UPDATE VACCINATION_RECORD\n" + "SET SHEEPSOLD=?,CATTLESOLD=?,GOATSOLD=?,PERANIMALCOST=?\n"
+					sql = "UPDATE VACCINATION_RECORD\n" + "SET SHEEPSOLD=?,CATTLESOLD=?,GOATSOLD=?,PERSOLDANIMALCOST=?\n"
 							+ "WHERE RID=?;";
 					ut.pstmt = ut.conn.prepareStatement(sql);
 					ut.pstmt.setString(1, sheepCB.getSelectedItem().toString());

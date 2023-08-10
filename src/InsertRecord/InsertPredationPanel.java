@@ -19,7 +19,7 @@ public class InsertPredationPanel extends JPanel {
 		setLayout(null);
 
 		JComboBox goatCB = new JComboBox();
-		goatCB.setBounds(19, 152, 83, 27);
+		goatCB.setBounds(19, 123, 83, 27);
 		for (int i = 0; i < 99; i++) {
 			goatCB.addItem(i);
 		}
@@ -30,11 +30,11 @@ public class InsertPredationPanel extends JPanel {
 		add(lblNewLabel_2_1);
 
 		JLabel lblNewLabel_1_1_2 = new JLabel("Predator Type");
-		lblNewLabel_1_1_2.setBounds(41, 50, 107, 16);
+		lblNewLabel_1_1_2.setBounds(33, 39, 107, 16);
 		add(lblNewLabel_1_1_2);
 
 		JComboBox type_CB = new JComboBox();
-		type_CB.setBounds(179, 46, 229, 27);
+		type_CB.setBounds(152, 35, 248, 27);
 		Utility ut = new Utility();
 		List<String> villageNames = ut.getUniquePype();
 		for (String village : villageNames) {
@@ -43,52 +43,52 @@ public class InsertPredationPanel extends JPanel {
 		add(type_CB);
 
 		JLabel lblNewLabel_1_1_1_1_1 = new JLabel("Sheep");
-		lblNewLabel_1_1_1_1_1.setBounds(315, 124, 37, 16);
+		lblNewLabel_1_1_1_1_1.setBounds(315, 95, 37, 16);
 		add(lblNewLabel_1_1_1_1_1);
 
 		JLabel lblNewLabel_1_1_1_1_1_1 = new JLabel("Goat");
-		lblNewLabel_1_1_1_1_1_1.setBounds(41, 124, 61, 16);
+		lblNewLabel_1_1_1_1_1_1.setBounds(41, 95, 61, 16);
 		add(lblNewLabel_1_1_1_1_1_1);
 
 		JLabel lblNewLabel_1_1_1_1_1_2 = new JLabel("Cattle");
-		lblNewLabel_1_1_1_1_1_2.setBounds(122, 124, 61, 16);
+		lblNewLabel_1_1_1_1_1_2.setBounds(122, 95, 61, 16);
 		add(lblNewLabel_1_1_1_1_1_2);
 
 		JLabel lblNewLabel_1_1_1_1_1_3 = new JLabel("Dozoo or Yak");
-		lblNewLabel_1_1_1_1_1_3.setBounds(195, 124, 85, 16);
+		lblNewLabel_1_1_1_1_1_3.setBounds(195, 95, 85, 16);
 		add(lblNewLabel_1_1_1_1_1_3);
 
 		JLabel lblNewLabel_2_1_1 = new JLabel("# Livestock killed by this predator");
-		lblNewLabel_2_1_1.setBounds(155, 96, 218, 16);
+		lblNewLabel_2_1_1.setBounds(155, 67, 218, 16);
 		add(lblNewLabel_2_1_1);
 
 		JLabel lblNewLabel_1_1_1_1_1_4 = new JLabel("Other");
-		lblNewLabel_1_1_1_1_1_4.setBounds(387, 124, 61, 16);
+		lblNewLabel_1_1_1_1_1_4.setBounds(387, 95, 61, 16);
 		add(lblNewLabel_1_1_1_1_1_4);
 
 		JComboBox cattleCB = new JComboBox();
-		cattleCB.setBounds(100, 152, 83, 27);
+		cattleCB.setBounds(100, 123, 83, 27);
 		for (int i = 0; i < 99; i++) {
 			cattleCB.addItem(i);
 		}
 		add(cattleCB);
 
 		JComboBox yakCB = new JComboBox();
-		yakCB.setBounds(195, 152, 83, 27);
+		yakCB.setBounds(195, 123, 83, 27);
 		for (int i = 0; i < 99; i++) {
 			yakCB.addItem(i);
 		}
 		add(yakCB);
 
 		JComboBox sheepCB = new JComboBox();
-		sheepCB.setBounds(290, 152, 83, 27);
+		sheepCB.setBounds(290, 123, 83, 27);
 		for (int i = 0; i < 99; i++) {
 			sheepCB.addItem(i);
 		}
 		add(sheepCB);
 
 		JComboBox otherCB = new JComboBox();
-		otherCB.setBounds(375, 152, 83, 27);
+		otherCB.setBounds(375, 123, 83, 27);
 		for (int i = 0; i < 99; i++) {
 			otherCB.addItem(i);
 		}
@@ -130,7 +130,7 @@ public class InsertPredationPanel extends JPanel {
 					if (!ut.rs.next()) {
 						sql = "INSERT INTO VACCINATION_RECORD (VYEAR,season,VDATE,VACCINATER,DONOR,BID,BANIMALSLAUGHTERED,\n"
 								+ "SANIMALSLAUGHTERED,\n" + "SHEEPSOLD,\n" + "CATTLESOLD,\n" + "GOATSOLD,\n"
-								+ "PERANIMALCOST) VALUES (?,?,?,?,?,?,0,0,0,0,0,0)"; // temp value of 0 for some
+								+ "PERSOLDANIMALCOST) VALUES (?,?,?,?,?,?,0,0,0,0,0,0)"; // temp value of 0 for some
 																						// attributes
 						ut.pstmt = ut.conn.prepareStatement(sql);
 						ut.pstmt.setString(1, year_CB.getSelectedItem().toString());
@@ -171,7 +171,7 @@ public class InsertPredationPanel extends JPanel {
 
 					// Add a new Vaccination_Record
 					sql = "INSERT INTO Predation_Record (PSHEEP,\n" + "PGOAT,\n" + "PCATTLE,\n" + "PDOZOO_YAK,\n" + "POTHERS,\n"
-							+ "predatorTYPE,PerPreyAnimalCost,\n" + "RID) VALUES (?,?,?,?,?,?,?)";
+							+ "predatorTYPE,PerPreyAnimalCost,\n" + "RID) VALUES (?,?,?,?,?,?,?,?)";
 					ut.pstmt = ut.conn.prepareStatement(sql);
 					ut.pstmt.setString(1, sheepCB.getSelectedItem().toString());
 					ut.pstmt.setString(2, goatCB.getSelectedItem().toString());
@@ -202,7 +202,7 @@ public class InsertPredationPanel extends JPanel {
 
 			
 		});
-		submitButton.setBounds(136, 229, 204, 29);
+		submitButton.setBounds(135, 195, 204, 29);
 		
 		add(submitButton);
 
@@ -214,15 +214,15 @@ public class InsertPredationPanel extends JPanel {
 
 			}
 		});
-		btnNewButton.setBounds(404, 45, 70, 29);
+		btnNewButton.setBounds(396, 34, 70, 29);
 		add(btnNewButton);
 		
-		JLabel lblNewLabel = new JLabel("Per Animal Cost");
-		lblNewLabel.setBounds(91, 201, 107, 16);
+		JLabel lblNewLabel = new JLabel("Per Animal Cost (PKR)");
+		lblNewLabel.setBounds(72, 167, 151, 16);
 		add(lblNewLabel);
 		
 		perAnimalCostTF = new JTextField();
-		perAnimalCostTF.setBounds(222, 191, 151, 26);
+		perAnimalCostTF.setBounds(235, 162, 151, 26);
 		add(perAnimalCostTF);
 		perAnimalCostTF.setColumns(10);
 
