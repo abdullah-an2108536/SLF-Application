@@ -36,7 +36,8 @@ CREATE TABLE BENEFICIARY
     FatherName VARCHAR(40) NOT NULL,
     Village VARCHAR(40) NOT NULL,
     CName VARCHAR(40) NOT NULL,
-    FOREIGN KEY (CName) REFERENCES COMMUNITY(CName)
+    FOREIGN KEY (CName) REFERENCES COMMUNITY(CName),
+    CONSTRAINT UC_Beneficiary UNIQUE (BName, FatherName)
 );
 
 CREATE TABLE VACCINATION_RECORD
@@ -52,10 +53,13 @@ CREATE TABLE VACCINATION_RECORD
     SheepSold INT NOT NULL,
     CattleSold INT NOT NULL,
     GoatSold INT NOT NULL,
-    PerAnimalCost DECIMAL NOT NULL,
+    PerSoldAnimalCost DECIMAL NOT NULL,
     BId INT NOT NULL,
+    CONSTRAINT UC_RECORD UNIQUE (VYear, Season,BId),
     FOREIGN KEY (BId) REFERENCES BENEFICIARY(BId)
 );
+
+
 
 CREATE TABLE VRecord
 (
@@ -67,6 +71,7 @@ CREATE TABLE VRecord
     VOthers INT NOT NULL,
     VaccinationType VARCHAR(50) NOT NULL,
     RID INT NOT NULL,
+    CONSTRAINT VRECORD_UQ UNIQUE(VaccinationType,RID),
     FOREIGN KEY (RID) REFERENCES VACCINATION_RECORD(RID)
 );
 
@@ -80,6 +85,8 @@ CREATE TABLE Disease_Record
     DiseaseType VARCHAR(50) NOT NULL,
     DOthers INT NOT NULL,
     RID INT NOT NULL,
+    CONSTRAINT DRECORD_UQ UNIQUE(DiseaseType,RID),
+
     FOREIGN KEY (RID) REFERENCES VACCINATION_RECORD(RID)
 );
 
@@ -90,10 +97,12 @@ CREATE TABLE Predation_Record
     PGoat INT NOT NULL,
     PCattle INT NOT NULL,
     PDozoo_Yak INT NOT NULL,
-    PerAminalCost DECIMAL NOT NULL,
+    PerPreyAminalCost DECIMAL NOT NULL,
     PredatorType VARCHAR(10) NOT NULL,
     POthers INT NOT NULL,
     RID INT NOT NULL,
+    CONSTRAINT PRECORD_UQ UNIQUE(PredatorType,RID),
+
     FOREIGN KEY (RID) REFERENCES VACCINATION_RECORD(RID)
 );
 
@@ -102,6 +111,8 @@ CREATE TABLE Disease_Record_Symptoms
     Symptom VARCHAR(50) NOT NULL,
     DiseaseID INT NOT NULL,
     PRIMARY KEY (Symptom, DiseaseID),
+    CONSTRAINT Symptoms_UQ UNIQUE(Symptom,DiseaseID),
+
     FOREIGN KEY (DiseaseID) REFERENCES Disease_Record(DiseaseID)
 );
 
@@ -113,7 +124,7 @@ VALUES
 -- Add other beneficiary rows similarly
 
 INSERT INTO VACCINATION_RECORD
-    (VYear, Season, VDate, Vaccinater, DONOR, BAnimalSlaughtered, SAnimalSlaughtered, SheepSold, CattleSold, GoatSold, PerAnimalCost, BId)
+    (VYear, Season, VDate, Vaccinater, DONOR, BAnimalSlaughtered, SAnimalSlaughtered, SheepSold, CattleSold, GoatSold, PerSoldAnimalCost, BId)
 VALUES
     (2023, 'Summer', '2023-03-01', 'Ihsan Ullah', 'SLT', 4, 6, 1, 2, 3, 10000, 1);
 
@@ -137,7 +148,7 @@ VALUES
 
 -- Sample data for Predation_Record
 INSERT INTO Predation_Record
-    (PSheep, PGoat, PCattle, PDozoo_Yak, PerAminalCost, PredatorType, POthers, RID)
+    (PSheep, PGoat, PCattle, PDozoo_Yak, PerPreyAminalCost, PredatorType, POthers, RID)
 VALUES
     (2, 1, 1, 0, 5000, 'Predator A', 0, 1);
 
