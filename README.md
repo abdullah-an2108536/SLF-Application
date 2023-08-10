@@ -1,1 +1,1 @@
-Java Desktop Application that serves as a GUI for Oracle Database containing Livestock Vaccination Data.
+Java Desktop Application that serves as a GUI for Relational Database containing Livestock Vaccination Data.
