@@ -50,8 +50,12 @@ public class ViewDataFrame extends JFrame {
         getContentPane().setLayout(new BorderLayout());
         getContentPane().add(sidePanel, BorderLayout.WEST);
         
-        JButton button2_1 = new JButton(" ");
-        button2_1.setBounds(6, 270, 178, 60);
+        JButton button2_1 = new JButton(" View Record Data");
+        button2_1.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        	}
+        });
+        button2_1.setBounds(6, 199, 178, 34);
         sidePanel.add(button2_1);
         
         JButton button2_1_1 = new JButton(" ");

@@ -34,9 +34,9 @@ public class Utility {
 			// Establish the connection using the modified JDBC URL
 			conn = DriverManager.getConnection(completeDbUrl);
 
-			if (conn != null) {
-				System.out.println("Connected to the database!");
-			}
+//			if (conn != null) {
+//				System.out.println("Connected to the database!");
+//			}
 
 		} catch (ClassNotFoundException e) {
 			System.err.println("JDBC Driver not found");
@@ -58,9 +58,9 @@ public class Utility {
 			// Establish the connection using the modified JDBC URL
 			conn = DriverManager.getConnection(completeDbUrl);
 
-			if (conn != null) {
-				System.out.println("Connected to the database!");
-			}
+//			if (conn != null) {
+//				System.out.println("Connected to the database!");
+//			}
 
 		} catch (ClassNotFoundException e) {
 			System.err.println("JDBC Driver not found");
