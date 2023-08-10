@@ -205,13 +205,19 @@ public class InsertDiseasePanel extends JPanel {
 		JButton btnNewButton = new JButton("new");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 			}
 		});
 		btnNewButton.setBounds(404, 45, 70, 29);
 		add(btnNewButton);
 
 		JButton symptomsBTN = new JButton("view Disease Symptoms");
+		symptomsBTN.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ViewSymptomsFrame s=new ViewSymptomsFrame(type_CB.getSelectedItem().toString());
+				s.setVisible(true);
+
+			}
+		});
 		symptomsBTN.setBounds(171, 74, 175, 29);
 		add(symptomsBTN);
 
