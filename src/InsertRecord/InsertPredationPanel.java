@@ -222,4 +222,9 @@ public class InsertPredationPanel extends JPanel {
 
     }
 
+	public InsertPredationPanel(JTextField bName_TF, JTextField fName_TF, JComboBox year_CB, JComboBox season_CB,
+			JComboBox month_CB, JComboBox day_CB, JComboBox vaccinater_CB, JComboBox donor_CB) {
+		// TODO Auto-generated constructor stub
+	}
+
 }

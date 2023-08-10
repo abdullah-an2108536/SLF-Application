@@ -37,7 +37,7 @@ public class MainMenu extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        JButton btnInsertRecord = new JButton("Insert Record");
+        JButton btnInsertRecord = new JButton("Insert Data");
         btnInsertRecord.setVerticalAlignment(SwingConstants.BOTTOM);
         btnInsertRecord.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -46,7 +46,7 @@ public class MainMenu extends JFrame {
         });
         btnInsertRecord.setBackground(new Color(130, 189, 217));
         btnInsertRecord.setFont(new Font("Bangla Sangam MN", Font.PLAIN, 20));
-        btnInsertRecord.setBounds(151, 267, 196, 43);
+        btnInsertRecord.setBounds(78, 267, 196, 43);
         contentPane.add(btnInsertRecord);
 
         JButton btnViewData = new JButton("View Data");
@@ -58,12 +58,19 @@ public class MainMenu extends JFrame {
         btnViewData.setVerticalAlignment(SwingConstants.BOTTOM);
         btnViewData.setBackground(new Color(130, 189, 217));
         btnViewData.setFont(new Font("Bangla Sangam MN", Font.PLAIN, 20));
-        btnViewData.setBounds(431, 267, 196, 43);
+        btnViewData.setBounds(306, 267, 196, 43);
         contentPane.add(btnViewData);
 
         JLabel lblNewLabel = new JLabel("");
         lblNewLabel.setIcon(new ImageIcon("SLF-Logo.png"));
         lblNewLabel.setBounds(243, 35, 281, 150);
         contentPane.add(lblNewLabel);
+        
+        JButton btnDeleteData = new JButton("Delete Data");
+        btnDeleteData.setVerticalAlignment(SwingConstants.BOTTOM);
+        btnDeleteData.setFont(new Font("Bangla Sangam MN", Font.PLAIN, 20));
+        btnDeleteData.setBackground(new Color(130, 189, 217));
+        btnDeleteData.setBounds(527, 267, 196, 43);
+        contentPane.add(btnDeleteData);
     }
 }

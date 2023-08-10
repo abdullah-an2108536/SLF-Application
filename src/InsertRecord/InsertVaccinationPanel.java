@@ -11,22 +11,8 @@ import java.util.List;
 
 public class InsertVaccinationPanel extends JPanel {
 
-//	private JTextField bName_TF;
-
-	/**
-	 * Create the panel.
-	 *
-	 * @param donor_CB
-	 * @param vaccinater_CB
-	 * @param date_TF
-	 * @param season_CB
-	 * @param year_CB
-	 * @param fName_TF
-	 */
 	public InsertVaccinationPanel(JTextField bName_TF, JTextField fName_TF, JComboBox year_CB, JComboBox season_CB,
-			JTextField date_TF, JComboBox vaccinater_CB, JComboBox donor_CB) {
-
-//		this.bName_TF=bName_TF;
+			JComboBox month_CB, JComboBox day_CB, JComboBox vaccinater_CB, JComboBox donor_CB) {
 
 		setLayout(null);
 
@@ -48,10 +34,10 @@ public class InsertVaccinationPanel extends JPanel {
 		JComboBox type_CB = new JComboBox();
 		type_CB.setBounds(179, 46, 229, 27);
 		Utility ut = new Utility();
-        List<String> villageNames = ut.getUniqueDvtype();
-        for (String village : villageNames) {
-        	type_CB.addItem(village);
-        }
+		List<String> villageNames = ut.getUniqueDvtype();
+		for (String village : villageNames) {
+			type_CB.addItem(village);
+		}
 		add(type_CB);
 
 		JLabel lblNewLabel_1_1_1_1_1 = new JLabel("Sheep");
@@ -120,15 +106,13 @@ public class InsertVaccinationPanel extends JPanel {
 					ut.pstmt.setString(1, bName_TF.getText());
 					ut.pstmt.setString(2, fName_TF.getText());
 
-					try {
-						ut.rs = ut.pstmt.executeQuery();
-						while (ut.rs.next()) {
-							bid = ut.rs.getString(1);
-						}
-					} catch (Exception e2) {
+					ut.rs = ut.pstmt.executeQuery();
+					while (ut.rs.next()) {
+						bid = ut.rs.getString(1);
+					}
+					if (bid == null) {
 						JOptionPane.showMessageDialog(null,
 								"Problem with Beneficiary Name or Father Name. Try adding a new Beneficiary if this one doesn't exist");
-
 					}
 
 					// Add a new RECORD if record doesn't already exist
@@ -139,21 +123,27 @@ public class InsertVaccinationPanel extends JPanel {
 					ut.pstmt.setString(3, bid);
 
 					ut.rs = ut.pstmt.executeQuery();
+					// If no Vaccination_Record found for this Beneficiary
+					ut.conn.setAutoCommit(false);
 					if (!ut.rs.next()) {
 						sql = "INSERT INTO VACCINATION_RECORD (VYEAR,season,VDATE,VACCINATER,DONOR,BID,BANIMALSLAUGHTERED,\n"
 								+ "SANIMALSLAUGHTERED,\n" + "SHEEPSOLD,\n" + "CATTLESOLD,\n" + "GOATSOLD,\n"
-								+ "PERANIMALCOST) VALUES (?,?,?,?,?,?,0,0,0,0,0,0)";
+								+ "PERANIMALCOST) VALUES (?,?,?,?,?,?,0,0,0,0,0,0)"; // temp value of 0 for some
+																						// attributes
 						ut.pstmt = ut.conn.prepareStatement(sql);
 						ut.pstmt.setString(1, year_CB.getSelectedItem().toString());
 						ut.pstmt.setString(2, season_CB.getSelectedItem().toString());
-						ut.pstmt.setString(3, date_TF.getText());
+						
+						
+						String date=year_CB.getSelectedItem().toString()+month_CB.getSelectedItem().toString()+day_CB.getSelectedItem().toString();
+						ut.pstmt.setString(3, date);
 						ut.pstmt.setString(4, vaccinater_CB.getSelectedItem().toString());
 						ut.pstmt.setString(5, donor_CB.getSelectedItem().toString());
 						ut.pstmt.setString(6, bid);
 						ut.pstmt.executeUpdate();
 
-						int x = JOptionPane.showConfirmDialog(null, "Do you wish to add a new RECORD", "Press Yes or No",
-								JOptionPane.YES_NO_OPTION);
+						int x = JOptionPane.showConfirmDialog(null, "Do you wish to add a new RECORD",
+								"Press Yes or No", JOptionPane.YES_NO_OPTION);
 
 						if (x == JOptionPane.YES_OPTION) {
 							ut.conn.commit();
@@ -201,15 +191,13 @@ public class InsertVaccinationPanel extends JPanel {
 					}
 
 				} catch (SQLException e1) {
-					JOptionPane.showMessageDialog(null, "error");
-
-					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, "An error occurred while inserting: " + e1.getMessage(),
+							"Error", JOptionPane.ERROR_MESSAGE);
 				}
 
 			}
 		});
 		submitButton.setBounds(136, 199, 204, 29);
-		
 
 		add(submitButton);
 
@@ -225,5 +213,7 @@ public class InsertVaccinationPanel extends JPanel {
 		add(btnNewButton);
 
 	}
+
+
 
 }

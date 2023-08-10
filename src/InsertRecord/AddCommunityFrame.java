@@ -44,7 +44,7 @@ public class AddCommunityFrame extends JFrame {
 	 */
 	public AddCommunityFrame() {
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 513, 513);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
@@ -61,7 +61,7 @@ public class AddCommunityFrame extends JFrame {
 
 		JLabel lblNewLabel_2 = new JLabel("Insert Community");
 		lblNewLabel_2.setFont(new Font("Songti TC", Font.PLAIN, 20));
-		lblNewLabel_2.setBounds(183, 21, 172, 35);
+		lblNewLabel_2.setBounds(201, 16, 147, 35);
 		panel.add(lblNewLabel_2);
 
 		JLabel lblNewLabel_1_1 = new JLabel("Country");
@@ -279,11 +279,19 @@ public class AddCommunityFrame extends JFrame {
 						if (rowsInserted > 0) {
 							JOptionPane.showMessageDialog(null, "A new community was inserted successfully.");
 						}
-					} catch (SQLException ex) {
+
+					} catch (SQLException sqle) {
+						if (sqle.getSQLState().equals("23000")) {
+							JOptionPane.showMessageDialog(null,
+									"Community with this name already exists.",
+									"Error", JOptionPane.ERROR_MESSAGE);
+						}
+					}
+
+					catch (Exception ex) {
 						JOptionPane.showMessageDialog(null,
 								"An error occurred while inserting the community: " + ex.getMessage(), "Error",
 								JOptionPane.ERROR_MESSAGE);
-						
 					}
 				}
 			}
