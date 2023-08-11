@@ -7,6 +7,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 import java.sql.SQLException;
 
 @SuppressWarnings("serial")
@@ -19,7 +20,7 @@ public class Login extends JFrame {
 	private JPasswordField passwordTF;
 
 	private JLabel logoImageLabel;
-	ImageIcon logoImage = new ImageIcon("SLF-Logo.png");
+	ImageIcon logoImage = new ImageIcon(Login.class.getResource("/SLF-Logo.png"));
 
 	/**
 	 * Launch the application.

@@ -1,6 +1,9 @@
 package viewData;
 
 import javax.swing.*;
+
+import main.Login;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -59,14 +62,16 @@ public class ViewDataFrame extends JFrame {
 		button2_1.setBounds(6, 199, 178, 34);
 		sidePanel.add(button2_1);
 
-		JButton logoBTN = new JButton("Logo Button");
+		JButton logoBTN = new JButton(" ");
+		logoBTN.setForeground(new Color(254, 255, 255));
+		logoBTN.setBackground(new Color(254, 255, 255));
 		logoBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				switchToPanel(new WelcomePanel());
 			}
 		});
 		logoBTN.setBounds(6, 6, 178, 108);
-		logoBTN.setIcon(new ImageIcon("SLF-Logo.png"));
+		logoBTN.setIcon(new ImageIcon(Login.class.getResource("/SLF-Logo.png")));
 		sidePanel.add(logoBTN);
 
 		JButton button2_1_1 = new JButton("Vaccination Record");

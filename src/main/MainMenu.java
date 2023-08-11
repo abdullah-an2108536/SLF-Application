@@ -61,7 +61,7 @@ public class MainMenu extends JFrame {
         contentPane.add(btnViewData);
 
         JLabel lblNewLabel = new JLabel("");
-        lblNewLabel.setIcon(new ImageIcon("SLF-Logo.png"));
+        lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/SLF-Logo.png")));
         lblNewLabel.setBounds(243, 35, 281, 150);
         contentPane.add(lblNewLabel);
     }
