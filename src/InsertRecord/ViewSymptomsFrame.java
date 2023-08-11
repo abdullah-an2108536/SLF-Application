@@ -115,3 +115,4 @@ public class ViewSymptomsFrame extends JFrame {
 		}
 	}
 }
+
