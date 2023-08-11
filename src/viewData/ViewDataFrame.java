@@ -79,6 +79,11 @@ public class ViewDataFrame extends JFrame {
 		sidePanel.add(button2_1_1);
 
 		JButton button2_1_1_1 = new JButton("Sales Record");
+		button2_1_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				switchToPanel(new ViewSalesRecordPanel());
+			}
+		});
 		button2_1_1_1.setBounds(6, 368, 178, 34);
 		sidePanel.add(button2_1_1_1);
 
@@ -92,12 +97,18 @@ public class ViewDataFrame extends JFrame {
 		sidePanel.add(button2_1_1_1_1);
 
 		JButton button2_1_1_1_1_1 = new JButton("Disease Record");
+		button2_1_1_1_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				switchToPanel(new ViewDiseaseRecordPanel());
+			}
+		});
 		button2_1_1_1_1_1.setBounds(6, 300, 178, 34);
 		sidePanel.add(button2_1_1_1_1_1);
 
 		JButton button2_1_1_1_1_1_1 = new JButton("Slaughter Record");
 		button2_1_1_1_1_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				switchToPanel(new ViewSlaughterRecordPanel());
 			}
 		});
 		button2_1_1_1_1_1_1.setBounds(6, 334, 178, 34);

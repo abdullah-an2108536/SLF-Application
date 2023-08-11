@@ -28,6 +28,7 @@ public class MainMenu extends JFrame {
     }
 
     public MainMenu() {
+    	setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 753, 410);
         contentPane = new JPanel();
