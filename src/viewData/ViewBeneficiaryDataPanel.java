@@ -33,6 +33,7 @@ public class ViewBeneficiaryDataPanel extends JPanel {
         add(scrollPane);
         
         txtV = new JTextField();
+        txtV.setBackground(new Color(255, 255, 255));
         txtV.setEditable(false);
         txtV.setFont(new Font("Microsoft Sans Serif", Font.PLAIN, 24));
         txtV.setText("View Beneficiary Data");
