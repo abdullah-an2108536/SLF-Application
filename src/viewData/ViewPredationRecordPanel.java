@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class ViewVaccinationRecordPanel extends JPanel {
+public class ViewPredationRecordPanel extends JPanel {
 	private JTable table;
 	private JTextField nameTF;
 	private JTextField fatherTF;
@@ -18,7 +18,7 @@ public class ViewVaccinationRecordPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public ViewVaccinationRecordPanel() {
+	public ViewPredationRecordPanel() {
 		setBackground(SystemColor.menu);
 		setLayout(null);
 		setPreferredSize(new Dimension(889, 717));
@@ -52,7 +52,7 @@ public class ViewVaccinationRecordPanel extends JPanel {
 		s.setBounds(387, 15, 87, 16);
 		add(s);
 
-		JButton submitBTN = new JButton("View Vaccination Records for this Beneficiary");
+		JButton submitBTN = new JButton("View Predation Records for this Beneficiary");
 		submitBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -67,10 +67,10 @@ public class ViewVaccinationRecordPanel extends JPanel {
 						String BID = ut.rs.getString(1);
 						System.out.println("BID: " + BID);
 
-						sql = "        SELECT R.VYEAR AS \"Year\",R.SEASON as \"Season\",V.VSHEEP AS \"Sheep\",v.VGoat as \"Goat\",V.VCattle as \"Cattle\",V.VDozoo_Yak as \"Dozoo/Yak\",V.VOthers as \"others\",V.VaccinationType\n"
-								+ "    FROM VACCINATION_RECORD R,VRecord V\n"
+						sql = "    SELECT R.VYEAR AS \"Year\",R.SEASON as \"Season\",V.PSHEEP AS \"Sheep\",v.PGoat as \"Goat\",V.PCattle as \"Cattle\",V.PDozoo_Yak as \"Dozoo/Yak\",V.POthers as \"others\",V.PredatorType,V.PerPreyAminalCost\n"
+								+ "    FROM VACCINATION_RECORD R,Predation_Record V\n"
 								+ "    WHERE R.RID=V.RID\n"
-								+ "    AND R.RID=(SELECT RID FROM VACCINATION_RECORD WHERE BID=?)";
+								+ "    AND R.RID=(SELECT RID FROM VACCINATION_RECORD WHERE BID=?);";
 						ut.pstmt = ut.conn.prepareStatement(sql);
 						ut.pstmt.setString(1, BID);
 						ut.rs = ut.pstmt.executeQuery();
@@ -78,6 +78,7 @@ public class ViewVaccinationRecordPanel extends JPanel {
 						// Populate the JTable using DbUtils
 						table.setModel(DbUtils.resultSetToTableModel(ut.rs));
 				        table.getColumnModel().getColumn(7).setPreferredWidth(150); // Adjust width of column 1
+				        table.getColumnModel().getColumn(8).setPreferredWidth(150); // Adjust width of column 1
 
 					} else {
 						JOptionPane.showMessageDialog(null, "No matching records found");

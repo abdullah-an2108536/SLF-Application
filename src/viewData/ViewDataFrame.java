@@ -70,23 +70,37 @@ public class ViewDataFrame extends JFrame {
 		sidePanel.add(logoBTN);
 
 		JButton button2_1_1 = new JButton("Vaccination Record");
+		button2_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				switchToPanel(new ViewVaccinationRecordPanel());
+			}
+		});
 		button2_1_1.setBounds(6, 232, 178, 34);
 		sidePanel.add(button2_1_1);
 
 		JButton button2_1_1_1 = new JButton("Sales Record");
-		button2_1_1_1.setBounds(6, 267, 178, 34);
+		button2_1_1_1.setBounds(6, 368, 178, 34);
 		sidePanel.add(button2_1_1_1);
 
 		JButton button2_1_1_1_1 = new JButton("Predation Record");
-		button2_1_1_1_1.setBounds(6, 303, 178, 34);
+		button2_1_1_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				switchToPanel(new ViewPredationRecordPanel());
+			}
+		});
+		button2_1_1_1_1.setBounds(6, 266, 178, 34);
 		sidePanel.add(button2_1_1_1_1);
 
 		JButton button2_1_1_1_1_1 = new JButton("Disease Record");
-		button2_1_1_1_1_1.setBounds(6, 338, 178, 34);
+		button2_1_1_1_1_1.setBounds(6, 300, 178, 34);
 		sidePanel.add(button2_1_1_1_1_1);
 
 		JButton button2_1_1_1_1_1_1 = new JButton("Slaughter Record");
-		button2_1_1_1_1_1_1.setBounds(6, 372, 178, 34);
+		button2_1_1_1_1_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		button2_1_1_1_1_1_1.setBounds(6, 334, 178, 34);
 		sidePanel.add(button2_1_1_1_1_1_1);
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 
