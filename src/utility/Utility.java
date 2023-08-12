@@ -12,8 +12,8 @@ import java.util.List;
 public class Utility {
 
 	public String dburl = "jdbc:sqlserver://slf-db-server.database.windows.net:1433;database=SLFdb";
-	private static String user = "slfadmin";
-	private static String pass = "slf@2023";
+	private static String user = "";
+	private static String pass = "";
 	public static Connection conn;
 	public ResultSet rs;
 	public Statement stmt;
