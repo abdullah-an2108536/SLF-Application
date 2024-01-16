@@ -67,10 +67,10 @@ public class ViewPredationRecordPanel extends JPanel {
 						String BID = ut.rs.getString(1);
 						System.out.println("BID: " + BID);
 
-						sql = "    SELECT R.VYEAR AS \"Year\",R.SEASON as \"Season\",V.PSHEEP AS \"Sheep\",v.PGoat as \"Goat\",V.PCattle as \"Cattle\",V.PDozoo_Yak as \"Dozoo/Yak\",V.POthers as \"others\",V.PredatorType,V.PerPreyAminalCost\n"
+						sql = "    SELECT R.VYEAR AS \"Year\",R.SEASON as \"Season\",V.PSHEEP AS \"Sheep\",v.PGoat as \"Goat\",V.PCattle as \"Cattle\",V.PDozoo_Yak as \"Dozoo/Yak\",V.POthers as \"others\",V.PredatorType,V.PerPreyAnimalCost\n"
 								+ "    FROM VACCINATION_RECORD R,Predation_Record V\n"
 								+ "    WHERE R.RID=V.RID\n"
-								+ "    AND R.RID=(SELECT RID FROM VACCINATION_RECORD WHERE BID=?);";
+								+ "    AND R.RID IN (SELECT RID FROM VACCINATION_RECORD WHERE BID=?);";
 						ut.pstmt = ut.conn.prepareStatement(sql);
 						ut.pstmt.setString(1, BID);
 						ut.rs = ut.pstmt.executeQuery();

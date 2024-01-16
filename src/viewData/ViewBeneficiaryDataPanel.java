@@ -43,7 +43,7 @@ public class ViewBeneficiaryDataPanel extends JPanel {
 
         try {
             Utility ut = new Utility();
-            String sql = "SELECT BID AS \"ID\", BNAME AS \"Name\", FATHERNAME AS \"Father Name\", VILLAGE AS \"Village\", CNAME AS \"Community\" FROM BENEFICIARY";
+            String sql = "SELECT BID AS \"ID\", BNAME AS \"Name\", FATHERNAME AS \"Father Name\", VILLAGE AS \"Village\", CNAME AS \"Community\" FROM BENEFICIARY ORDER BY BNAME ASC";
             ut.pstmt = ut.conn.prepareStatement(sql);  // Use PreparedStatement instead of Statement
             ut.rs = ut.pstmt.executeQuery();  // Just executeQuery() without passing the SQL query
 

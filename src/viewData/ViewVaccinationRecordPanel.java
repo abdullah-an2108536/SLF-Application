@@ -67,10 +67,20 @@ public class ViewVaccinationRecordPanel extends JPanel {
 						String BID = ut.rs.getString(1);
 						System.out.println("BID: " + BID);
 
-						sql = "        SELECT R.VYEAR AS \"Year\",R.SEASON as \"Season\",V.VSHEEP AS \"Sheep\",v.VGoat as \"Goat\",V.VCattle as \"Cattle\",V.VDozoo_Yak as \"Dozoo/Yak\",V.VOthers as \"others\",V.VaccinationType\n"
-								+ "    FROM VACCINATION_RECORD R,VRecord V\n"
-								+ "    WHERE R.RID=V.RID\n"
-								+ "    AND R.RID=(SELECT RID FROM VACCINATION_RECORD WHERE BID=?)";
+						sql = "SELECT \n"
+								+ "    R.VYEAR AS \"Year\",\n"
+								+ "    R.SEASON AS \"Season\",\n"
+								+ "    V.VSHEEP AS \"Sheep\",\n"
+								+ "    V.VGoat AS \"Goat\",\n"
+								+ "    V.VCattle AS \"Cattle\",\n"
+								+ "    V.VDozoo_Yak AS \"Dozoo/Yak\",\n"
+								+ "    V.VOthers AS \"others\",\n"
+								+ "    V.VaccinationType\n"
+								+ "FROM \n"
+								+ "    VACCINATION_RECORD R, VRecord V\n"
+								+ "WHERE \n"
+								+ "    R.RID = V.RID\n"
+								+ "    AND R.RID IN (SELECT RID FROM VACCINATION_RECORD WHERE BID = ?)";
 						ut.pstmt = ut.conn.prepareStatement(sql);
 						ut.pstmt.setString(1, BID);
 						ut.rs = ut.pstmt.executeQuery();

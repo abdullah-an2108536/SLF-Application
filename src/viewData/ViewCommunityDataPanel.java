@@ -44,16 +44,13 @@ public class ViewCommunityDataPanel extends JPanel {
 			String sql = "SELECT\n"
 					+ "    CName AS \"Name\",\n"
 					+ "    Alias AS \"Alias\",\n"
-					+ "    Country,\n"
 					+ "    Province,\n"
-					+ "    District,\n"
 					+ "    GPSLat AS \"Latitude\",\n"
 					+ "    GPSLong AS \"Longitude\",\n"
 					+ "    Area AS \"Total Area\",\n"
-					+ "    ForestArea AS \"Forested Area\",\n"
 					+ "    PastureLand AS \"Pasture Land Area\",\n"
 					+ "    Protection_Status AS \"Protection Status\"\n"
-					+ "FROM COMMUNITY;\n"
+					+ "FROM COMMUNITY ORDER BY CName ASC;\n"
 					+ "";
 			ut.pstmt = ut.conn.prepareStatement(sql);
 			ut.rs = ut.pstmt.executeQuery();

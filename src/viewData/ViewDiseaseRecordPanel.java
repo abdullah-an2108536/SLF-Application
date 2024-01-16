@@ -70,7 +70,7 @@ public class ViewDiseaseRecordPanel extends JPanel {
 						sql = " SELECT R.VYEAR AS \"Year\",R.SEASON as \"Season\",V.DSHEEP AS \"Sheep\",v.DGoat as \"Goat\",V.DCattle as \"Cattle\",V.DDozoo_Yak as \"Dozoo/Yak\",V.DOthers as \"others\",V.DiseaseType\n"
 								+ "    FROM VACCINATION_RECORD R,Disease_Record V\n"
 								+ "    WHERE R.RID=V.RID\n"
-								+ "    AND R.RID=(SELECT RID FROM VACCINATION_RECORD WHERE BID=?);";
+								+ "    AND R.RID IN (SELECT RID FROM VACCINATION_RECORD WHERE BID=?);";
 						ut.pstmt = ut.conn.prepareStatement(sql);
 						ut.pstmt.setString(1, BID);
 						ut.rs = ut.pstmt.executeQuery();

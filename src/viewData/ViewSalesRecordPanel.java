@@ -69,7 +69,7 @@ public class ViewSalesRecordPanel extends JPanel {
 
 						sql = "    SELECT R.VYEAR AS \"Year\",R.SEASON as \"Season\",R.SheepSold,R.CattleSold,R.GoatSold,r.PerSoldAnimalCost\n"
 								+ "    FROM VACCINATION_RECORD R\n"
-								+ "    WHERE R.RID=(SELECT RID FROM VACCINATION_RECORD WHERE BID=?);\n"
+								+ "    WHERE R.RID IN (SELECT RID FROM VACCINATION_RECORD WHERE BID=?);\n"
 								+ "";
 						ut.pstmt = ut.conn.prepareStatement(sql);
 						ut.pstmt.setString(1, BID);

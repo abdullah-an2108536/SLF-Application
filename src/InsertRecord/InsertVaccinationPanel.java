@@ -112,7 +112,7 @@ public class InsertVaccinationPanel extends JPanel {
 					}
 					if (bid == null) {
 						JOptionPane.showMessageDialog(null,
-								"Problem with Beneficiary Name or Father Name. Try adding a new Beneficiary if this one doesn't exist");
+								"This Beneficiary does not exist. Please add a new one");
 					}
 
 					// Add a new RECORD if record doesn't already exist
