@@ -77,7 +77,7 @@ public class ViewDataFrame extends JFrame {
 		JButton button2_1_1 = new JButton("Vaccination Record");
 		button2_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				switchToPanel(new ViewVaccinationRecordPanel());
+				switchToPanel(new generateSummaryPanel());
 			}
 		});
 		button2_1_1.setBounds(6, 232, 178, 34);
@@ -118,6 +118,15 @@ public class ViewDataFrame extends JFrame {
 		});
 		button2_1_1_1_1_1_1.setBounds(6, 334, 178, 34);
 		sidePanel.add(button2_1_1_1_1_1_1);
+		
+		JButton Report = new JButton("Report");
+		Report.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				switchToPanel(new ViewVaccinationRecordPanel());
+			}
+		});
+		Report.setBounds(6, 406, 178, 34);
+		sidePanel.add(Report);
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 
 		setLocationRelativeTo(null);

@@ -12,10 +12,9 @@ import java.awt.event.ActionEvent;
 
 public class ViewVaccinationRecordPanel extends JPanel {
 	private JTable table;
-	private JTextField nameTF;
-	private JTextField fatherTF;
-
+	private JTextField yearTF;
 	/**
+
 	 * Create the panel.
 	 */
 	public ViewVaccinationRecordPanel() {
@@ -34,72 +33,102 @@ public class ViewVaccinationRecordPanel extends JPanel {
 		scrollPane.setBounds(20, 81, 863, 630);
 		add(scrollPane);
 
-		nameTF = new JTextField();
-		nameTF.setBounds(92, 43, 217, 26);
-		add(nameTF);
-		nameTF.setColumns(10);
+		JComboBox XCB = new JComboBox();
+		XCB.setBounds(67, 46, 259, 27);
+		XCB.addItem("Community");
+		XCB.addItem("Vaccination");
+		XCB.addItem("Predation");
+		XCB.addItem("Disease");
+		XCB.addItem("Sales");
+		XCB.addItem("none");
+		add(XCB);
 
-		fatherTF = new JTextField();
-		fatherTF.setBounds(321, 43, 208, 26);
-		add(fatherTF);
-		fatherTF.setColumns(10);
+		JComboBox YCB = new JComboBox();
+		YCB.setBounds(377, 46, 259, 27);
+		YCB.addItem("Vaccination");
+		YCB.addItem("Predation");
+		YCB.addItem("Disease");
+		YCB.addItem("Sales");
+		YCB.addItem("Community");
+		YCB.addItem("none");
+		add(YCB);
 
-		JLabel lblNewLabel = new JLabel("Beneficiary Name");
-		lblNewLabel.setBounds(149, 15, 108, 16);
-		add(lblNewLabel);
+		yearTF = new JTextField();
+		yearTF.setBounds(338, 8, 158, 26);
+		add(yearTF);
+		yearTF.setColumns(10);
 
-		JLabel s = new JLabel("Father Name");
-		s.setBounds(387, 15, 87, 16);
-		add(s);
-
-		JButton submitBTN = new JButton("View Vaccination Records for this Beneficiary");
+		JButton submitBTN = new JButton("Generate Summary");
 		submitBTN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					Utility ut = new Utility();
-					String sql = "SELECT BID FROM BENEFICIARY WHERE BNAME=? AND FatherNAME=?";
-					ut.pstmt = ut.conn.prepareStatement(sql);
-					ut.pstmt.setString(1, nameTF.getText());
-					ut.pstmt.setString(2, fatherTF.getText());
-					ut.rs = ut.pstmt.executeQuery();
+				Utility ut = new Utility();
+				String sql;
+				if ( (XCB.getSelectedItem().equals("Community") && YCB.getSelectedItem().equals("Vaccination")) || (XCB.getSelectedItem().equals("Vaccination") && YCB.getSelectedItem().equals("Community"))  ) {
+					try {
 
-					if (ut.rs.next()) {
-						String BID = ut.rs.getString(1);
-						System.out.println("BID: " + BID);
-
-						sql = "SELECT \n"
-								+ "    R.VYEAR AS \"Year\",\n"
-								+ "    R.SEASON AS \"Season\",\n"
-								+ "    V.VSHEEP AS \"Sheep\",\n"
-								+ "    V.VGoat AS \"Goat\",\n"
-								+ "    V.VCattle AS \"Cattle\",\n"
-								+ "    V.VDozoo_Yak AS \"Dozoo/Yak\",\n"
-								+ "    V.VOthers AS \"others\",\n"
-								+ "    V.VaccinationType\n"
-								+ "FROM \n"
-								+ "    VACCINATION_RECORD R, VRecord V\n"
-								+ "WHERE \n"
-								+ "    R.RID = V.RID\n"
-								+ "    AND R.RID IN (SELECT RID FROM VACCINATION_RECORD WHERE BID = ?)";
+						sql = "SELECT C.CNAME as 'Community',\n"
+								+ "       SUM(V.VSHEEP) AS 'Sheep',\n"
+								+ "       SUM(V.VGOAT) AS Goat,\n"
+								+ "       SUM(V.VCATTLE) AS Cattle,\n"
+								+ "       SUM(V.VDozoo_Yak) AS Dozoo_Yak\n"
+								+ "FROM COMMUNITY C\n"
+								+ "JOIN BENEFICIARY B ON C.CNAME = B.CNAME\n"
+								+ "JOIN VACCINATION_RECORD VR ON B.BID = VR.BID\n"
+								+ "JOIN VRECORD V ON VR.RID = V.RID\n"
+								+ "WHERE VR.VYear = ?\n"
+								+ "GROUP BY C.CNAME;";
 						ut.pstmt = ut.conn.prepareStatement(sql);
-						ut.pstmt.setString(1, BID);
+						ut.pstmt.setString(1, yearTF.getText());
 						ut.rs = ut.pstmt.executeQuery();
 
-						// Populate the JTable using DbUtils
 						table.setModel(DbUtils.resultSetToTableModel(ut.rs));
-				        table.getColumnModel().getColumn(7).setPreferredWidth(150); // Adjust width of column 1
-
-					} else {
-						JOptionPane.showMessageDialog(null, "No matching records found");
+						table.getColumnModel().getColumn(0).setPreferredWidth(200);
+					} catch (SQLException e1) {
+						e1.printStackTrace();
 					}
-				} catch (SQLException e1) {
-					e1.printStackTrace();
+				}
+				else if ( (XCB.getSelectedItem().equals("Community") && YCB.getSelectedItem().equals("Predation")) || (XCB.getSelectedItem().equals("Predation") && YCB.getSelectedItem().equals("Community"))  ) {
+					try {
+
+						sql = "SELECT C.CNAME,\n"
+								+ "       SUM(P.PSHEEP) AS TotalSheep,\n"
+								+ "       SUM(P.PGOAT) AS TotalGoat,\n"
+								+ "       SUM(P.PCATTLE) AS TotalCattle,\n"
+								+ "       SUM(P.PDozoo_Yak) AS TotalDozoo_Yak,\n"
+								+ "       SUM(P.PerPreyAnimalCost) AS TotalPreyAnimalCost\n"
+								+ "FROM COMMUNITY C\n"
+								+ "JOIN BENEFICIARY B ON C.CNAME = B.CNAME\n"
+								+ "JOIN VACCINATION_RECORD VR ON B.BID = VR.BID\n"
+								+ "JOIN Predation_Record P ON VR.RID = P.RID\n"
+								+ "WHERE VR.VYear = ?\n"
+								+ "GROUP BY C.CNAME;";
+						ut.pstmt = ut.conn.prepareStatement(sql);
+						ut.pstmt.setString(1, yearTF.getText());
+						ut.rs = ut.pstmt.executeQuery();
+
+						table.setModel(DbUtils.resultSetToTableModel(ut.rs));
+						table.getColumnModel().getColumn(0).setPreferredWidth(200);
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
 				}
 
 			}
 		});
-		submitBTN.setBounds(541, 40, 324, 29);
+		submitBTN.setBounds(684, 26, 172, 29);
 		add(submitBTN);
+
+		JLabel lblNewLabel = new JLabel("X");
+		lblNewLabel.setBounds(43, 46, 27, 16);
+		add(lblNewLabel);
+
+		JLabel lblNewLabel_1 = new JLabel("Y");
+		lblNewLabel_1.setBounds(338, 50, 27, 16);
+		add(lblNewLabel_1);
+
+		JLabel lblNewLabel_2 = new JLabel("Year");
+		lblNewLabel_2.setBounds(297, 13, 36, 16);
+		add(lblNewLabel_2);
 
 	}
 }
